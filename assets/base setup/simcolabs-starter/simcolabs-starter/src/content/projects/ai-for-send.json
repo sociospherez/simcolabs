@@ -1,0 +1,16 @@
+{
+  "slug": "ai-for-send",
+  "title": "AI for SEND",
+  "category": "Education & SEND",
+  "status": "Concept",
+  "summary": "Explores AI-supported tools for clarity, case handling and better communication in SEND processes.",
+  "tags": ["SEND", "Education", "Casework", "Accessibility"],
+  "featured": true,
+  "problem": "SEND environments often suffer from fragmented communication, slow processing and difficult documentation burdens.",
+  "approach": "Concepts focus on support for drafting, summarisation, provision clarity and structured stakeholder communication.",
+  "nextSteps": [
+    "Caseflow scenarios",
+    "Provision clarity assistant",
+    "Accessible family-facing outputs"
+  ]
+}

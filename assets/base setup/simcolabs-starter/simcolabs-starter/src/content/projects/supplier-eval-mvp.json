@@ -1,0 +1,16 @@
+{
+  "slug": "supplier-eval-mvp",
+  "title": "Supplier Evaluation MVP",
+  "category": "Procurement",
+  "status": "Prototype",
+  "summary": "A compact framework to compare suppliers using weighted criteria, risk and strategic fit.",
+  "tags": ["Suppliers", "Evaluation", "Procurement", "Risk"],
+  "featured": false,
+  "problem": "Supplier decisions are often fragmented across spreadsheets and inconsistent judgement calls.",
+  "approach": "Uses structured scoring, visual summaries and category weighting to improve comparison quality.",
+  "nextSteps": [
+    "Scoring matrix UI",
+    "Category weighting controls",
+    "Exportable comparison view"
+  ]
+}

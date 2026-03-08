@@ -1,0 +1,16 @@
+{
+  "slug": "predict-simulate-warn",
+  "title": "Predict • Simulate • Warn",
+  "category": "Civic Security",
+  "status": "Concept",
+  "summary": "Open-source concept line for defence and civic security through prediction, simulation and warning systems.",
+  "tags": ["Defence", "Civic Security", "Simulation", "Risk"],
+  "featured": true,
+  "problem": "Complex civic and security risks need earlier insight and clearer scenario modelling before escalation occurs.",
+  "approach": "A modular concept stack connecting risk signals, simulation layers and warning outputs for planners and responders.",
+  "nextSteps": [
+    "Concept architecture mapping",
+    "Use-case narratives",
+    "Open-source governance framing"
+  ]
+}
