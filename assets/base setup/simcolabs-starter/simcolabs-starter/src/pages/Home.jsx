@@ -2,6 +2,7 @@ import Hero from '../components/home/Hero';
 import ProjectGrid from '../components/showcase/ProjectGrid';
 import projects from '../content/projects';
 
+
 export default function Home() {
   const featured = projects.filter((project) => project.featured);
 
