@@ -1,26 +1,16 @@
-import Hero from '../components/home/Hero';
-import ProjectGrid from '../components/showcase/ProjectGrid';
-import projects from '../content/projects';
-
+import LabBackground from "../components/background/LabBakckground";
+import Hero from "../components/home/Hero";
+import FeaturedExperiments from "../components/home/FeaturedExperiments";
+import ExplorationAreas from "../components/home/ExplorationAreas";
+import JoinLab from "../components/home/JoinLab";
 export default function Home() {
-  const featured = projects.filter((project) => project.featured);
-
   return (
-    <>
+    <div className="relative min-h-screen overflow-hidden bg-[#050b16]/85 text-white">
+      <LabBackground />
       <Hero />
-
-      <section className="mx-auto max-w-6xl px-6 py-10">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-cyan-300/70">Featured work</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-              MVPs, concepts and applied experiments.
-            </h2>
-          </div>
-        </div>
-
-        <ProjectGrid projects={featured} />
-      </section>
-    </>
+      <FeaturedExperiments />
+      <ExplorationAreas />
+      <JoinLab />
+    </div>
   );
 }
