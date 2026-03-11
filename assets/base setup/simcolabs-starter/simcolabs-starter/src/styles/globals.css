@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-white font-[Inter] antialiased;
+  background-image:
+    radial-gradient(circle at top, rgba(38,99,235,0.22), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(59,130,246,0.14), transparent 28%),
+    radial-gradient(circle at 20% 80%, rgba(14,165,233,0.12), transparent 30%);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+}

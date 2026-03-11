@@ -1,0 +1,16 @@
+{
+  "slug": "persona-builder",
+  "title": "Persona Builder",
+  "category": "Communication",
+  "status": "MVP",
+  "summary": "Builds structured personas for strategy, design, recruitment and behavioural modelling.",
+  "tags": ["Persona", "Strategy", "UX", "Profiles"],
+  "featured": true,
+  "problem": "Teams need better ways to turn assumptions about users into structured, decision-ready personas.",
+  "approach": "Combines guided inputs, scoring logic and narrative synthesis to generate practical persona views.",
+  "nextSteps": [
+    "Spider-graph scoring",
+    "Multi-step workflow",
+    "Export-ready summaries"
+  ]
+}

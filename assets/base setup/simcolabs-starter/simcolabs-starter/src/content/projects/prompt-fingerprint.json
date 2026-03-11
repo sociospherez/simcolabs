@@ -1,0 +1,16 @@
+{
+  "slug": "prompt-fingerprint",
+  "title": "Prompt → Interpretation + Thinking Fingerprint",
+  "category": "AI Tooling",
+  "status": "Prototype",
+  "summary": "Maps how prompts are interpreted and what reasoning signatures they are likely to trigger.",
+  "tags": ["Interpretation", "Reasoning", "Prompt Design"],
+  "featured": true,
+  "problem": "Users often do not know why a prompt produces a specific style of response or reasoning path.",
+  "approach": "The concept surfaces prompt intent, ambiguity and likely reasoning patterns in a visual layer.",
+  "nextSteps": [
+    "Fingerprint visual grammar",
+    "Prompt family comparison",
+    "Continuity tracing across sessions"
+  ]
+}

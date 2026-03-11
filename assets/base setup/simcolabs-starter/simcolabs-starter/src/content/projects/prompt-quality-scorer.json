@@ -1,0 +1,16 @@
+{
+  "slug": "prompt-quality-scorer",
+  "title": "Prompt Quality & Continuity Scorer",
+  "category": "AI Tooling",
+  "status": "MVP",
+  "summary": "Evaluates prompt structure, coherence and continuity across interactions.",
+  "tags": ["Prompting", "Scoring", "Continuity", "LLM"],
+  "featured": true,
+  "problem": "Prompt quality is often inconsistent, leading to fragmented outputs and avoidable rework.",
+  "approach": "A lightweight model scores prompts against clarity, continuity, intent and structural completeness.",
+  "nextSteps": [
+    "Prompt comparison mode",
+    "Visual scoring dashboard",
+    "Actionable improvement guidance"
+  ]
+}
