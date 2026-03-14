@@ -31,8 +31,8 @@ export default function Showcase() {
   }, [activeCategory, activeStatus]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#050b16]/90 text-white">
-      <LabBackground />
+    <div className="relative min-h-screen overflow-hidden bg-[#050b16]20 text-white">
+
 
       <section className="mx-auto max-w-6xl px-6 pb-10 pt-24 md:pt-32">
         <SectionHeading
@@ -63,6 +63,7 @@ export default function Showcase() {
           ))}
         </div>
       </section>
+            <LabBackground />
     </div>
   );
 }
