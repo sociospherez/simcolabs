@@ -1,3 +1,14 @@
 {
-  "githubPullRequests.pullRequestDescription": "commit"
+  "githubPullRequests.pullRequestDescription": "commit",
+  "vite.autoStart": false,
+  "vite.devCommand": "npm run dev",
+  "vite.https": true,
+  "vite.showTerminal": true,
+  "vite.vitepressAutoRouting": true,
+  "path-intellisense.autoSlashAfterDirectory": true,
+  "path-intellisense.showHiddenFiles": true,
+  "npm.enableRunFromFolder": true,
+  "npm.packageManager": "npm",
+  "npm.runSilent": true,
+  "merge-conflict.autoNavigateNextConflict.enabled": true
 }
