@@ -10,6 +10,7 @@ export default function Contact() {
       <a href="mailto:info@simcolabs.uk" className="mt-8 inline-flex rounded-full border border-cyan-300/20 bg-blue-500/20 px-5 py-3 text-white no-underline">
         info@simcolabs.uk
       </a>
+      
     </section>
   );
 }

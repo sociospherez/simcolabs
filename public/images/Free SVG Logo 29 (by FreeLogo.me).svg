@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 390 262">
+  <text x="317.549" y="3025.14" font-family="Helvetica" font-size="12" transform="matrix(5.35875 0 0 5.35876 -1706.411 -15998.773)">M<tspan x="326.945" y="3025.14">Y</tspan></text>
+  <g font-family="&quot;Helvetica-Bold&quot;,&quot;Helvetica&quot;" font-size="12" font-weight="700">
+    <text x="317.549" y="3025.14" transform="matrix(5.35875 0 0 5.35876 -1616.524 -16000.047)">C<tspan x="325.615px 334.349px" y="3025.14px 3025.14px">OM</tspan></text>
+    <text x="343.745" y="3025.14" transform="matrix(5.35875 0 0 5.35876 -1616.524 -16000.047)">P</text>
+    <text x="350.309" y="3025.14" transform="matrix(5.35875 0 0 5.35876 -1616.524 -16000.047)">A<tspan x="358.375px 366.441px" y="3025.14px 3025.14px">NY</tspan></text>
+  </g>
+  <text x="317.549" y="3025.14" font-family="Helvetica" font-size="12" transform="matrix(3.06835 0 0 3.06836 -881.814 -9028.786)">f<tspan x="320.283px 323.679px 329.753px 335.827px 337.893px 343.967px 350.04px 356.114px 358.848px 368.244px" y="3025.14px 3025.14px 3025.14px 3025.14px 3025.14px 3025.14px 3025.14px 3025.14px 3025.14px 3025.14px">reelogo.me</tspan></text>
+  <path d="M63.829 114.468H10.704L146.23 16.003c13.136-9.544 30.924-9.544 44.06 0l135.524 98.465H272.69s-63.21-45.925-91.276-66.313a22.377 22.377 0 0 0-26.31 0c-28.064 20.388-91.274 66.313-91.274 66.313Z"/>
+  <path fill="url(#a)" d="M56.013 78H33.441l58.156-42.253a14.947 14.947 0 0 1 17.573 0L167.327 78h-22.572l-38.924-28.279a9.265 9.265 0 0 0-10.895 0L56.013 78Z" transform="matrix(2.35356 0 0 2.35356 -15.113 -69.11)"/>
+  <defs>
+    <linearGradient id="a" x1="0" x2="1" y1="0" y2="0" gradientTransform="rotate(-180 83.664 39) scale(133.886)" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

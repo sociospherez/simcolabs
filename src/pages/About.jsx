@@ -8,6 +8,7 @@ export default function About() {
         that feels credible, structured and expandable. It is intentionally designed as a front
         door for research-led MVPs, concepts and frameworks.
       </p>
+
     </section>
   );
 }
