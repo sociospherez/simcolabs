@@ -6,6 +6,7 @@ import Research from "../pages/Research";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import ProjectDetail from "../pages/ProjectDetail";
+import LabInterface from "../pages/LabInterface";
 
 export default function AppRouter() {
   return (
@@ -16,6 +17,7 @@ export default function AppRouter() {
         <Route path="/research" element={<Research />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/lab-interface" element={<LabInterface />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>
     </PageShell>
