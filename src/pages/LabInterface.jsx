@@ -1,4 +1,5 @@
 import LabInterfacePanel from "../components/lab/LabInterfacePanel";
+import LabBackground from "../components/background/LabBakckground";
 
 const examplePrompts = [
   "How could AI support SEND planning?",
@@ -68,7 +69,9 @@ export default function LabInterface() {
 
           <LabInterfacePanel />
         </div>
+
       </section>
+      <LabBackground />
     </div>
   );
 }

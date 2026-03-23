@@ -1,3 +1,4 @@
+import LabBackground from "../components/background/LabBakckground";
 export default function About() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -8,7 +9,9 @@ export default function About() {
         that feels credible, structured and expandable. It is intentionally designed as a front
         door for research-led MVPs, concepts and frameworks.
       </p>
-
+<LabBackground/>
     </section>
+
+
   );
 }

@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import LabBackground from "../../components/background/LabBackground";
+import LabBackground from "../background/LabBakckground";
 
 export default function PageShell({ children }) {
   return (

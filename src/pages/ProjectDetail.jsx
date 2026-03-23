@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import getProjectBySlug from "../utils/getProjectBySlug";
 import StatusBadge from "../components/ui/StatusBadge";
 import projects from "../content/projects";
+import LabBackground from "../components/background/LabBakckground";
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -181,6 +182,7 @@ export default function ProjectDetail() {
               ))}
             </div>
           </div>
+          <LabBackground />
         </section>
       )}
     </div>

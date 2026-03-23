@@ -3,7 +3,7 @@ import LabBackground from "../components/background/LabBakckground";
 import SectionHeading from "../components/ui/SectionHeading";
 import FilterBar from "../components/showcase/FilterBar";
 import ProjectCard from "../components/showcase/ProjectCard";
-import GlowingCards from "../components/lightswind/glowing-cards";
+
 import projects from "../content/projects";
 
 export default function Showcase() {

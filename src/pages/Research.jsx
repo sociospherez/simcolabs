@@ -1,3 +1,5 @@
+import LabBackground from "../components/background/LabBakckground";
+
 export default function Research() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20">
@@ -17,6 +19,7 @@ export default function Research() {
           </div>
         ))}
       </div>
+      <LabBackground />
     </section>
   );
 }
