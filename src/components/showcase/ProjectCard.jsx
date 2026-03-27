@@ -5,7 +5,7 @@ export default function ProjectCard({ project }) {
   return (
     <Link
       to={`/projects/${project.slug}`}
-      className="group relative block overflow-hidden rounded-[26px] border border-slate-200/70 bg-white/90 p-6 shadow-[0_10px_35px_rgba(15,23,42,0.06)] backdrop-blur-sm transition duration-300 hover:-translate-y-1.5 hover:border-blue-300/60 hover:bg-white dark:border-white/10 dark:bg-slate-950/55 dark:shadow-none dark:hover:border-sky-300/20 dark:hover:bg-slate-900/75"
+      className="group relative block overflow-hidden rounded-[26px] border border-slate-200/70 bg-white/90 p-6 shadow-[0_10px_35px_rgba(15,23,42,0.06)] backdrop-blur-lg transition duration-300 hover:-translate-y-1.5 hover:border-blue-300/60 hover:bg-white dark:border-white/10 dark:bg-slate-950/55 dark:shadow-none dark:hover:border-sky-300/20 dark:hover:bg-slate-900/90"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/60 to-transparent opacity-70 dark:via-sky-300/40 dark:opacity-60" />
       <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-blue-100/60 blur-2xl transition duration-500 group-hover:bg-blue-100/80 dark:bg-sky-400/8 dark:group-hover:bg-sky-400/12" />
