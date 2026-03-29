@@ -3,8 +3,8 @@ import LabBackground from "../components/background/LabBakckground";
 import SectionHeading from "../components/ui/SectionHeading";
 import FilterBar from "../components/showcase/FilterBar";
 import ProjectCard from "../components/showcase/ProjectCard";
-
 import projects from "../content/projects";
+// import GlowingCards from "../components/lightswind/glowing-cards"
 
 export default function Showcase() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -63,11 +63,11 @@ export default function Showcase() {
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {filteredProjects.map((project) => (
+        {/* <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          // {filteredProjects.map((project) => (
             <GlowingCards key={project.slug} project={project} />
           ))}
-        </div>
+        </div> */}
       </section>
             <LabBackground />
     </div>

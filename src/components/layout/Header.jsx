@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import navigation from '../../data/navigation';
+import ThemeToggle from "../ui/ThemeToggle";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050b16]/70 backdrop-blur-xl">
+    <header className="fixed w-full z-50 bg-dark-glass glass-nav py-4 px-8 backdrop-blur-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <NavLink to="/" className="flex items-center gap-3 no-underline">
           <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-400/35 bg-blue-500/10 shadow-glow">
@@ -31,6 +32,7 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
+      <ThemeToggle/>
       </div>
     </header>
   );
