@@ -32,7 +32,7 @@ export default function Showcase() {
   }, [activeCategory, activeStatus]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#050b16]20 theme-text-primary">
+   <div className="relative min-h-screen overflow-hidden">
 
 
       <section className="mx-auto max-w-6xl px-6 pb-10 pt-24 md:pt-32">
@@ -53,7 +53,7 @@ export default function Showcase() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="mb-6 text-sm text-slate-400">
+        <div className="mb-6 text-sm theme-text-secondary">
           Showing {filteredProjects.length} project
           {filteredProjects.length !== 1 ? "s" : ""}
         </div>

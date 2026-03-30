@@ -17,20 +17,19 @@ export default function FeaturedExperiments() {
         {featured.map((project) => (
           <article
             key={project.slug}
-            className="group rounded-[24px] border border-[var(--border-subtle)] theme-card p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-sky-300/20 hover:bg-slate-900/70"
-          >
+            className="theme-card group rounded-[24px] p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1">
             <div className="mb-4 flex items-center justify-between gap-3">
-              <span className="rounded-full border border-sky-300/15 theme-chip px-3 py-1 text-xs uppercase tracking-[0.14em] text-sky-200/80">
+              <span className="theme-chip rounded-full px-3 py-1 text-xs uppercase tracking-[0.14em]">
                 {project.status}
               </span>
-              <span className="text-xs text-slate-400">{project.category}</span>
+              <span className="theme-text-secondary text-xs">{project.category}</span>
             </div>
 
-            <h3 className="text-xl font-semibold tracking-tight theme-text-primary">
+            <h3 className="theme-text-primary text-xl font-semibold tracking-tight">
               {project.title}
             </h3>
 
-            <p className="mt-3 text-sm leading-7 theme-text-secondary">
+            <p className="theme-text-secondary mt-3 text-sm leading-7">
               {project.summary}
             </p>
 
@@ -38,7 +37,7 @@ export default function FeaturedExperiments() {
               {project.tags?.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-slate-400"
+                  className="theme-pill rounded-full px-3 py-1 text-xs"
                 >
                   {tag}
                 </span>

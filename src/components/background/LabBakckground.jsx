@@ -1,9 +1,23 @@
-import { useEffect, useRef } from "react";
-import useThemeMode from "../../hooks/useThemeMode";
+import { useEffect, useRef, useState } from "react";
 
 export default function LabBackground() {
   const canvasRef = useRef(null);
-  const isNight = useThemeMode();
+  const [isNight, setIsNight] = useState(
+    typeof document !== "undefined" && document.body.classList.contains("night")
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsNight(document.body.classList.contains("night"));
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -39,19 +53,19 @@ export default function LabBackground() {
     };
 
     const drawConnections = () => {
+      const maxDist = isNight ? 120 : 95;
+
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          const maxDist = isNight ? 120 : 95;
-
           if (dist < maxDist) {
             ctx.beginPath();
             ctx.strokeStyle = isNight
               ? `rgba(125, 211, 252, ${0.06 * (1 - dist / maxDist)})`
-              : `rgba(59, 130, 246, ${0.045 * (1 - dist / maxDist)})`;
+              : `rgba(37, 99, 235, ${0.05 * (1 - dist / maxDist)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -71,7 +85,7 @@ export default function LabBackground() {
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = isNight
           ? "rgba(147, 197, 253, 0.45)"
-          : "rgba(59, 130, 246, 0.22)";
+          : "rgba(37, 99, 235, 0.22)";
         ctx.fill();
 
         p.x += p.dx;
@@ -115,7 +129,7 @@ export default function LabBackground() {
         className={`pointer-events-none fixed inset-0 -z-10 transition-opacity duration-500 ${
           isNight
             ? "bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.12),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(56,189,248,0.08),transparent_24%),radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.06),transparent_24%)] opacity-100"
-            : "bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(14,165,233,0.06),transparent_22%),radial-gradient(circle_at_20%_80%,rgba(96,165,250,0.05),transparent_22%)] opacity-75"
+            : "bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(14,165,233,0.08),transparent_24%),radial-gradient(circle_at_20%_80%,rgba(99,102,241,0.06),transparent_24%)] opacity-80"
         }`}
       />
     </>
