@@ -11,7 +11,7 @@ export default function StatusBadge({ status }) {
     <span
       className={`inline-flex rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${
         statusStyles[status] ||
-        "border-white/10 bg-white/5 text-slate-300"
+        "border-[var(--border-subtle)] theme-surface-strong/5 theme-text-secondary"
       }`}
     >
       {status}

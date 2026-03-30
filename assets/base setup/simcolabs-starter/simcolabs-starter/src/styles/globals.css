@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  @apply bg-ink text-white font-[Inter] antialiased;
+  @apply bg-ink theme-text-primary font-[Inter] antialiased;
   background-image:
     radial-gradient(circle at top, rgba(38,99,235,0.22), transparent 35%),
     radial-gradient(circle at 80% 20%, rgba(59,130,246,0.14), transparent 28%),

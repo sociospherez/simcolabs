@@ -22,7 +22,7 @@ export default function ExplorationAreas() {
         {areas.map((area) => (
           <div
             key={area}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-slate-200 transition duration-300 hover:bg-white/[0.05] hover:border-sky-300/15"
+            className="rounded-2xl border border-[var(--border-subtle)] theme-surface-strong/[0.03] px-5 py-4 text-slate-200 transition duration-300 hover:theme-surface-strong/[0.05] hover:border-sky-300/15"
           >
             {area}
           </div>

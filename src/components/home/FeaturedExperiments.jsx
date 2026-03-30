@@ -1,8 +1,9 @@
 import SectionHeading from "../ui/SectionHeading";
 import projects from "../../content/projects";
-
+import useThemeMode from "../../hooks/useThemeMode";
 export default function FeaturedExperiments() {
   const featured = projects.slice(0, 6);
+  const isNight = useThemeMode();
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
@@ -16,20 +17,20 @@ export default function FeaturedExperiments() {
         {featured.map((project) => (
           <article
             key={project.slug}
-            className="group rounded-[24px] border border-white/10 bg-slate-950/55 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-sky-300/20 hover:bg-slate-900/70"
+            className="group rounded-[24px] border border-[var(--border-subtle)] theme-card p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-sky-300/20 hover:bg-slate-900/70"
           >
             <div className="mb-4 flex items-center justify-between gap-3">
-              <span className="rounded-full border border-sky-300/15 bg-sky-400/10 px-3 py-1 text-xs uppercase tracking-[0.14em] text-sky-200/80">
+              <span className="rounded-full border border-sky-300/15 theme-chip px-3 py-1 text-xs uppercase tracking-[0.14em] text-sky-200/80">
                 {project.status}
               </span>
               <span className="text-xs text-slate-400">{project.category}</span>
             </div>
 
-            <h3 className="text-xl font-semibold tracking-tight text-white">
+            <h3 className="text-xl font-semibold tracking-tight theme-text-primary">
               {project.title}
             </h3>
 
-            <p className="mt-3 text-sm leading-7 text-slate-300">
+            <p className="mt-3 text-sm leading-7 theme-text-secondary">
               {project.summary}
             </p>
 
@@ -37,7 +38,7 @@ export default function FeaturedExperiments() {
               {project.tags?.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400"
+                  className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-slate-400"
                 >
                   {tag}
                 </span>

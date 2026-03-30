@@ -18,23 +18,23 @@ export default function LabInterface() {
               Lab Interface
             </p>
 
-            <h1 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
+            <h1 className="text-4xl font-semibold tracking-tight theme-text-primary md:text-5xl">
               Explore an idea in a controlled experimental environment.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="mt-5 max-w-2xl text-lg leading-8 theme-text-secondary">
               The Lab Interface is a structured interaction surface designed to
               interpret ideas within a defined boundary. It is not an open chatbot
               or support agent. Instead, it reflects how SimCo Labs approaches
               experimentation, systems thinking and applied innovation.
             </p>
 
-            <div className="mt-8 rounded-[26px] border border-white/10 bg-slate-950/50 p-6 backdrop-blur-sm">
+            <div className="mt-8 rounded-[26px] border border-[var(--border-subtle)] bg-slate-950/50 p-6 backdrop-blur-sm">
               <p className="mb-4 text-xs uppercase tracking-[0.2em] text-sky-300/70">
                 How to use it
               </p>
 
-              <div className="space-y-4 text-sm leading-7 text-slate-300">
+              <div className="space-y-4 text-sm leading-7 theme-text-secondary">
                 <p>
                   Describe an idea, challenge or theme you are interested in.
                 </p>
@@ -58,7 +58,7 @@ export default function LabInterface() {
                 {examplePrompts.map((prompt) => (
                   <span
                     key={prompt}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300"
+                    className="rounded-full border border-[var(--border-subtle)] theme-surface-strong/[0.04] px-4 py-2 text-sm theme-text-secondary"
                   >
                     {prompt}
                   </span>

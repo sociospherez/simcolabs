@@ -30,14 +30,14 @@ export default function Hero() {
           A research-driven innovation studio
         </div>
 
-        <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-6xl">
+        <h1 className="mt-6 text-4xl font-semibold tracking-tight theme-text-primary md:text-6xl">
           Exploring better ways to model,
           <span className="block bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-400 bg-clip-text text-transparent">
             simulate and transform complex systems.
           </span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+        <p className="mt-6 max-w-2xl text-lg leading-8 theme-text-secondary">
           SimCo Labs is a showcase platform for applied experimentation across AI, simulation,
           communication, governance and transformation.
         </p>
@@ -50,8 +50,8 @@ export default function Hero() {
                 key={pill.label}
                 className={`rounded-full border px-4 py-2 text-sm transition ${
                   isActive
-                    ? 'border-cyan-300/35 bg-blue-400/15 text-white shadow-[0_0_24px_rgba(56,189,248,0.14)]'
-                    : 'border-white/10 bg-white/5 text-slate-300 hover:bg-white/10'
+                    ? 'border-cyan-300/35 bg-blue-400/15 theme-text-primary shadow-[0_0_24px_rgba(56,189,248,0.14)]'
+                    : 'border-[var(--border-subtle)] theme-surface-strong/5 theme-text-secondary hover:theme-surface-strong/10'
                 }`}
                 onMouseEnter={() => setActive(pill)}
                 onFocus={() => setActive(pill)}
@@ -66,8 +66,8 @@ export default function Hero() {
         <p className="mt-4 min-h-6 text-sm text-cyan-100/80">{active.note}</p>
       </div>
 
-      <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-        <div className="mb-4 flex items-center justify-between text-sm text-slate-300">
+      <div className="rounded-[28px] border border-[var(--border-subtle)] theme-surface-strong/5 p-6 backdrop-blur-xl">
+        <div className="mb-4 flex items-center justify-between text-sm theme-text-secondary">
           <span>Research Themes</span>
           <span className="text-xs uppercase tracking-[0.16em] text-cyan-300/70">Live direction</span>
         </div>
@@ -77,10 +77,10 @@ export default function Hero() {
           ['Collaboration', 'Combining strategy, business context and technical thinking into shared problem-solving.'],
           ['Innovation', 'Exploring practical use of AI, automation and new workflows in evolving digital environments.'],
         ].map(([title, text]) => (
-          <div key={title} className="mb-3 rounded-2xl border border-white/10 bg-[#081223]/80 p-5 last:mb-0 hover:border-cyan-300/25 hover:bg-[#0b1730]/90">
+          <div key={title} className="mb-3 rounded-2xl border border-[var(--border-subtle)] bg-[#081223]/80 p-5 last:mb-0 hover:border-cyan-300/25 hover:bg-[#0b1730]/90">
             <div className="mb-2 flex items-center gap-3">
               <div className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
-              <h3 className="text-lg font-medium text-white">{title}</h3>
+              <h3 className="text-lg font-medium theme-text-primary">{title}</h3>
             </div>
             <p className="text-sm leading-6 text-slate-400">{text}</p>
           </div>

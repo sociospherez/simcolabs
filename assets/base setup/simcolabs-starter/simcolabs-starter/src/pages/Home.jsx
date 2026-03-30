@@ -14,7 +14,7 @@ export default function Home() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-sm uppercase tracking-[0.2em] text-cyan-300/70">Featured work</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight theme-text-primary md:text-4xl">
               MVPs, concepts and applied experiments.
             </h2>
           </div>

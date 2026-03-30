@@ -124,7 +124,7 @@ export default function LabInterfacePanel() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-slate-950/60 p-6 backdrop-blur-md md:p-7">
+    <div className="relative overflow-hidden rounded-[30px] border border-[var(--border-subtle)] bg-slate-950/60 p-6 backdrop-blur-md md:p-7">
       <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-sky-400/8 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-16 -left-10 h-32 w-32 rounded-full bg-cyan-400/8 blur-3xl" />
 
@@ -134,17 +134,17 @@ export default function LabInterfacePanel() {
             <p className="text-xs uppercase tracking-[0.2em] text-sky-300/70">
               Interactive Console
             </p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight theme-text-primary">
               Lab Interface
             </h2>
           </div>
 
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-400/10 text-sky-200 shadow-[0_0_24px_rgba(59,130,246,0.10)]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-300/20 theme-chip text-sky-200 shadow-[0_0_24px_rgba(59,130,246,0.10)]">
             <div className="h-3.5 w-3.5 rotate-45 bg-gradient-to-br from-cyan-300 to-sky-500 shadow-[0_0_14px_rgba(103,232,249,0.5)]" />
           </div>
         </div>
 
-        <div className="mb-5 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-400">
+        <div className="mb-5 rounded-2xl border border-[var(--border-subtle)] theme-surface-strong/[0.03] px-4 py-3 text-sm text-slate-400">
           Launch context: <span className="text-slate-200">{launchContext}</span>
         </div>
 
@@ -156,13 +156,13 @@ export default function LabInterfacePanel() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Describe an idea, challenge or area of interest..."
-          className="min-h-[150px] w-full rounded-[22px] border border-white/10 bg-black/20 p-4 text-sm leading-7 text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/25 focus:bg-black/30"
+          className="min-h-[150px] w-full rounded-[22px] border border-[var(--border-subtle)] bg-black/20 p-4 text-sm leading-7 theme-text-primary outline-none transition placeholder:theme-text-muted focus:border-sky-300/25 focus:bg-black/30"
         />
 
         <div className="mt-4 flex flex-wrap gap-3">
           <button
             onClick={analyseIdea}
-            className="rounded-full border border-sky-300/20 bg-sky-500/12 px-5 py-2.5 text-sm text-white transition hover:bg-sky-500/20"
+            className="rounded-full border border-sky-300/20 bg-sky-500/12 px-5 py-2.5 text-sm theme-text-primary transition hover:bg-sky-500/20"
           >
             Analyse idea
           </button>
@@ -173,7 +173,7 @@ export default function LabInterfacePanel() {
                 exampleInputs[Math.floor(Math.random() * exampleInputs.length)]
               )
             }
-            className="rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm text-slate-200 transition hover:bg-white/[0.08]"
+            className="rounded-full border border-[var(--border-subtle)] theme-surface-strong/[0.04] px-5 py-2.5 text-sm text-slate-200 transition hover:theme-surface-strong/[0.08]"
           >
             Try an example
           </button>
@@ -181,21 +181,21 @@ export default function LabInterfacePanel() {
 
         {result && (
           <div className="mt-8 space-y-5">
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-[24px] border border-[var(--border-subtle)] theme-surface-strong/[0.03] p-5">
               <p className="mb-2 text-xs uppercase tracking-[0.18em] text-sky-300/70">
                 Detected Domain
               </p>
-              <p className="text-lg font-medium text-white">{result.domain}</p>
+              <p className="text-lg font-medium theme-text-primary">{result.domain}</p>
             </div>
 
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-[24px] border border-[var(--border-subtle)] theme-surface-strong/[0.03] p-5">
               <p className="mb-2 text-xs uppercase tracking-[0.18em] text-sky-300/70">
                 Interpretation
               </p>
-              <p className="leading-7 text-slate-300">{result.interpretation}</p>
+              <p className="leading-7 theme-text-secondary">{result.interpretation}</p>
             </div>
 
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-[24px] border border-[var(--border-subtle)] theme-surface-strong/[0.03] p-5">
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-sky-300/70">
                 Suggested Direction
               </p>
@@ -204,7 +204,7 @@ export default function LabInterfacePanel() {
                 {result.suggestions.map((suggestion) => (
                   <div
                     key={suggestion}
-                    className="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-slate-300"
+                    className="rounded-2xl border border-[var(--border-subtle)] theme-card px-4 py-3 text-sm theme-text-secondary"
                   >
                     {suggestion}
                   </div>
@@ -212,7 +212,7 @@ export default function LabInterfacePanel() {
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-[24px] border border-[var(--border-subtle)] theme-surface-strong/[0.03] p-5">
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-sky-300/70">
                 Related Experiments
               </p>
@@ -223,9 +223,9 @@ export default function LabInterfacePanel() {
                     <Link
                       key={project.slug}
                       to={`/projects/${project.slug}`}
-                      className="block rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-4 transition hover:border-sky-300/20 hover:bg-slate-900/70"
+                      className="block rounded-2xl border border-[var(--border-subtle)] theme-card px-4 py-4 transition hover:border-sky-300/20 hover:bg-slate-900/70"
                     >
-                      <div className="text-sm font-medium text-white">
+                      <div className="text-sm font-medium theme-text-primary">
                         {project.title}
                       </div>
                       <div className="mt-1 text-xs text-slate-400">
@@ -234,7 +234,7 @@ export default function LabInterfacePanel() {
                     </Link>
                   ))
                 ) : (
-                  <div className="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-slate-400">
+                  <div className="rounded-2xl border border-[var(--border-subtle)] theme-card px-4 py-3 text-sm text-slate-400">
                     No closely related experiment surfaced yet.
                   </div>
                 )}
