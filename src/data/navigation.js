@@ -5,6 +5,8 @@ const navigation = [
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' },
   { label: 'Lab Interface', path: '/lab-interface' },
+  //{ label: 'Transformation', path: '/tranformation-brief' },
+
 ];
 
 export default navigation;
