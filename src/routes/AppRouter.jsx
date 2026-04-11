@@ -8,6 +8,7 @@ import Contact from "../pages/Contact";
 import ProjectDetail from "../pages/ProjectDetail";
 import LabInterface from "../pages/LabInterface";
 import TransformationBrief from "../pages/TransformationBrief";
+import RouteInsuranceConcept from "../pages/RouteInsuranceConcept";
 
 export default function AppRouter() {
   return (
@@ -21,6 +22,7 @@ export default function AppRouter() {
         <Route path="/lab-interface" element={<LabInterface />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/transformation-brief" element={<TransformationBrief />} />
+        <Route path="/route-insurance" element={<RouteInsuranceConcept />} />
 
       </Routes>
     </PageShell>
