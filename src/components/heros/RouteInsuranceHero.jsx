@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 const routeSamples = {
   "Oxford|Liverpool Street": {
@@ -6,62 +6,59 @@ const routeSamples = {
     traffic: "+22m",
     buffer: "+30m",
     cover: "4 Hours",
-    insight: "Optimised for a same-day city route with live traffic tolerance.",
+    confidence: "Route matched with urban congestion tolerance.",
   },
   "Reading|Canary Wharf": {
     duration: "1h 31m",
     traffic: "+18m",
     buffer: "+20m",
     cover: "2.5 Hours",
-    insight: "Shorter commuter route with sensible protection against congestion.",
+    confidence: "Balanced for commuter traffic and time certainty.",
   },
   "Cambridge|Heathrow": {
     duration: "2h 05m",
     traffic: "+27m",
     buffer: "+28m",
     cover: "3 Hours",
-    insight: "Airport run with extra resilience for traffic variance and delays.",
+    confidence: "Extended for airport variability and travel resilience.",
   },
+};
+
+const fallbackResult = {
+  duration: "2h 20m",
+  traffic: "+20m",
+  buffer: "+25m",
+  cover: "3.5 Hours",
+  confidence: "Adaptive estimate based on route length and journey risk.",
 };
 
 export default function RouteInsuranceHero() {
   const [from, setFrom] = useState("Oxford");
   const [to, setTo] = useState("Liverpool Street");
   const [isCalculating, setIsCalculating] = useState(false);
-  const [animateResult, setAnimateResult] = useState(false);
-  const [activePulse, setActivePulse] = useState(0);
+  const [hasCalculated, setHasCalculated] = useState(true);
 
-  const key = `${from}|${to}`;
+  const routeKey = `${from}|${to}`;
 
   const result = useMemo(() => {
-    return (
-      routeSamples[key] || {
-        duration: "2h 20m",
-        traffic: "+20m",
-        buffer: "+25m",
-        cover: "3.5 Hours",
-        insight:
-          "Adaptive estimate based on route length, traffic exposure, and safety margin.",
-      }
-    );
-  }, [key]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActivePulse((prev) => (prev + 1) % 3);
-    }, 1200);
-
-    return () => clearInterval(interval);
-  }, []);
+    return routeSamples[routeKey] || fallbackResult;
+  }, [routeKey]);
 
   const handleCalculate = () => {
     setIsCalculating(true);
-    setAnimateResult(false);
+    setHasCalculated(false);
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       setIsCalculating(false);
-      setAnimateResult(true);
+      setHasCalculated(true);
     }, 1400);
+  };
+
+  const applyQuickRoute = (start, end) => {
+    setFrom(start);
+    setTo(end);
+    setHasCalculated(true);
+    setIsCalculating(false);
   };
 
   const quickRoutes = [
@@ -71,32 +68,37 @@ export default function RouteInsuranceHero() {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 pb-16 pt-28 md:px-10 lg:px-16">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.12),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.10),transparent_30%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-[#07111f]/85 to-slate-950/70" />
+    <section className="relative min-h-screen overflow-hidden px-6 pb-14 pt-28 md:px-10 lg:px-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(56,189,248,0.16),transparent_28%),radial-gradient(circle_at_84%_22%,rgba(34,211,238,0.14),transparent_26%),radial-gradient(circle_at_60%_80%,rgba(59,130,246,0.10),transparent_30%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/75 via-[#06111f]/90 to-slate-950/70" />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute left-[8%] top-[18%] h-72 w-72 rounded-full border border-sky-300/10 blur-3xl animate-pulse" />
-        <div className="absolute right-[10%] top-[15%] h-96 w-96 rounded-full border border-cyan-300/10 blur-3xl animate-pulse [animation-delay:700ms]" />
-        <div className="absolute left-[22%] bottom-[12%] h-64 w-64 rounded-full border border-white/5 blur-3xl animate-pulse [animation-delay:1200ms]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[10%] top-[15%] h-80 w-80 rounded-full border border-sky-300/10 blur-3xl animate-pulse" />
+        <div className="absolute right-[8%] top-[12%] h-[26rem] w-[26rem] rounded-full border border-cyan-300/10 blur-3xl animate-pulse [animation-delay:900ms]" />
+        <div className="absolute bottom-[10%] left-[30%] h-72 w-72 rounded-full border border-white/5 blur-3xl animate-pulse [animation-delay:1400ms]" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[82vh] max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto flex min-h-[84vh] max-w-7xl flex-col justify-between">
         <div className="space-y-8">
-          <div className="inline-flex items-center gap-3 rounded-full border border-sky-300/20 bg-sky-400/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-sky-200">
-            Simcolabs · InsurTech Simulation
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="rounded-full border border-sky-300/20 bg-sky-400/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-sky-200">
+              Simcolabs · InsurTech Simulation
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-slate-300">
+              Route-aware cover logic
+            </span>
           </div>
 
-          <div className="space-y-5">
-            <h1 className="max-w-4xl text-4xl font-semibold leading-tight md:text-6xl xl:text-7xl">
+          <div className="max-w-5xl space-y-5">
+            <h1 className="text-4xl font-semibold leading-tight md:text-6xl xl:text-7xl">
               Insurance that thinks in{" "}
               <span className="text-sky-300">journeys</span>, not hours.
             </h1>
 
-            <p className="max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
-              Enter a route, simulate live cover logic, and see how flexible
-              insurance can feel when time, traffic, and risk are calculated for
-              you.
+            <p className="max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
+              A full-width simulation of how smarter cover could work: route,
+              traffic, resilience margin, and optimal cover window — all
+              calculated as one connected experience.
             </p>
           </div>
 
@@ -104,11 +106,7 @@ export default function RouteInsuranceHero() {
             {quickRoutes.map(([start, end]) => (
               <button
                 key={`${start}-${end}`}
-                onClick={() => {
-                  setFrom(start);
-                  setTo(end);
-                  setAnimateResult(false);
-                }}
+                onClick={() => applyQuickRoute(start, end)}
                 className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition hover:border-sky-300/30 hover:bg-sky-400/10"
               >
                 {start} → {end}
@@ -116,167 +114,172 @@ export default function RouteInsuranceHero() {
             ))}
           </div>
 
-          <div className="grid max-w-3xl gap-4 sm:grid-cols-3">
-            {[
-              { label: "Route logic", value: "Live journey fit" },
-              { label: "Flexibility", value: "Only what you need" },
-              { label: "Outcome", value: "Best-fit cover window" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-md"
-              >
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-                  {item.label}
-                </p>
-                <p className="mt-3 text-lg font-medium text-white">{item.value}</p>
-              </div>
-            ))}
+          <div className="grid gap-3 lg:grid-cols-[1.1fr_1.1fr_auto]">
+            <input
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
+              placeholder="From"
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/40"
+            />
+            <input
+              value={to}
+              onChange={(e) => setTo(e.target.value)}
+              placeholder="To"
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/40"
+            />
+            <button
+              onClick={handleCalculate}
+              className="rounded-2xl bg-sky-300 px-6 py-4 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]"
+            >
+              {isCalculating ? "Calculating..." : "Simulate Cover"}
+            </button>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute inset-0 rounded-[34px] bg-sky-400/10 blur-3xl" />
-          <div className="relative rounded-[34px] border border-white/10 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-xl md:p-6">
-            <div className="rounded-[28px] border border-white/10 bg-[#081320]/95 p-5 md:p-6">
-              <div className="flex items-start justify-between gap-4">
+        <div className="mt-10 grid gap-6">
+          <div className="rounded-[34px] border border-white/10 bg-slate-950/45 p-4 shadow-2xl backdrop-blur-xl md:p-6">
+            <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(8,19,32,0.88),rgba(5,12,22,0.96))] p-5 md:p-6">
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-                    Smart Journey Cover
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                    Live route simulation
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
-                    Live Simulation
-                  </h2>
+                  <p className="mt-2 text-sm text-slate-300">
+                    {from} → {to}
+                  </p>
                 </div>
-                <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300">
-                  Interactive
+
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: "Base Time", value: result.duration },
+                    { label: "Traffic", value: result.traffic },
+                    { label: "Buffer", value: result.buffer },
+                  ].map((item, index) => (
+                    <div
+                      key={item.label}
+                      className={`rounded-full border px-3 py-2 text-xs uppercase tracking-[0.18em] transition duration-500 ${
+                        isCalculating
+                          ? "border-sky-300/30 bg-sky-400/10 text-sky-200 animate-pulse"
+                          : "border-white/10 bg-white/5 text-slate-300"
+                      }`}
+                      style={{ transitionDelay: `${index * 120}ms` }}
+                    >
+                      {item.label}: {item.value}
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-3 md:grid-cols-[1fr_1fr_auto]">
-                <input
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/40"
-                  placeholder="From"
-                />
-                <input
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-sky-300/40"
-                  placeholder="To"
-                />
-                <button
-                  onClick={handleCalculate}
-                  className="rounded-2xl bg-sky-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]"
-                >
-                  {isCalculating ? "Calculating..." : "Calculate"}
-                </button>
-              </div>
+              <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] px-4 py-8 md:px-8 md:py-10">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.04),transparent)] animate-[heroSweep_7s_linear_infinite]" />
 
-              <div className="mt-7 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.82),rgba(6,17,31,0.96))] p-5">
-                <div className="mb-5 flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
-                      Route Visual
-                    </p>
-                    <p className="mt-2 text-sm text-slate-300">
-                      {from} → {to}
-                    </p>
+                <div className="relative h-[18rem] md:h-[22rem]">
+                  <div className="absolute left-[3%] top-[65%] rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-slate-200 backdrop-blur-md">
+                    Start · {from}
                   </div>
-                  <div className="flex gap-2">
-                    {[0, 1, 2].map((i) => (
-                      <span
-                        key={i}
-                        className={`h-2.5 w-2.5 rounded-full transition ${
-                          activePulse === i ? "bg-sky-300 shadow-[0_0_18px_rgba(125,211,252,0.8)]" : "bg-white/15"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
 
-                <div className="relative h-40 overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03]">
-                  <div className="absolute left-[10%] top-[70%] h-3 w-3 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.7)]" />
-                  <div className="absolute right-[12%] top-[28%] h-3 w-3 rounded-full bg-sky-300 shadow-[0_0_22px_rgba(125,211,252,0.95)]" />
+                  <div className="absolute right-[3%] top-[18%] rounded-full border border-sky-300/20 bg-sky-400/10 px-3 py-1.5 text-xs text-sky-200 backdrop-blur-md">
+                    Destination · {to}
+                  </div>
 
                   <svg
-                    viewBox="0 0 100 100"
+                    viewBox="0 0 1000 320"
                     className="absolute inset-0 h-full w-full"
                     preserveAspectRatio="none"
                   >
+                    <defs>
+                      <linearGradient id="routeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="rgba(255,255,255,0.20)" />
+                        <stop offset="50%" stopColor="rgba(125,211,252,0.55)" />
+                        <stop offset="100%" stopColor="rgba(56,189,248,0.95)" />
+                      </linearGradient>
+                    </defs>
+
                     <path
-                      d="M 12 72 C 26 70, 32 82, 44 62 S 66 36, 88 28"
+                      d="M 70 235 C 180 245, 245 275, 355 210 S 540 95, 650 130 S 815 115, 930 78"
                       fill="none"
-                      stroke="rgba(125,211,252,0.22)"
-                      strokeWidth="2.5"
+                      stroke="rgba(125,211,252,0.16)"
+                      strokeWidth="8"
                       strokeLinecap="round"
                     />
+
                     <path
-                      d="M 12 72 C 26 70, 32 82, 44 62 S 66 36, 88 28"
+                      d="M 70 235 C 180 245, 245 275, 355 210 S 540 95, 650 130 S 815 115, 930 78"
                       fill="none"
-                      stroke="rgba(125,211,252,0.95)"
-                      strokeWidth="2.5"
+                      stroke="url(#routeGlow)"
+                      strokeWidth="4"
                       strokeLinecap="round"
-                      strokeDasharray="120"
-                      strokeDashoffset={isCalculating ? 120 : 0}
+                      strokeDasharray="1200"
+                      strokeDashoffset={isCalculating ? 1200 : 0}
                       style={{
                         transition: isCalculating
                           ? "none"
-                          : "stroke-dashoffset 1.2s ease",
+                          : "stroke-dashoffset 1.4s ease-out",
                       }}
                     />
                   </svg>
 
+                  <div className="absolute left-[6%] top-[72%] h-4 w-4 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.7)]" />
+                  <div className="absolute right-[5.5%] top-[22%] h-4 w-4 rounded-full bg-sky-300 shadow-[0_0_26px_rgba(125,211,252,0.95)]" />
+
                   <div
-                    className={`absolute top-[62%] h-4 w-4 rounded-full bg-sky-300 shadow-[0_0_20px_rgba(125,211,252,0.95)] ${
-                      isCalculating ? "animate-route-travel" : ""
+                    className={`absolute h-5 w-5 rounded-full bg-sky-300 shadow-[0_0_28px_rgba(125,211,252,0.95)] ${
+                      isCalculating ? "animate-route-glide" : ""
                     }`}
-                    style={{ left: isCalculating ? "10%" : "78%" }}
+                    style={{
+                      left: isCalculating ? "6%" : "88%",
+                      top: isCalculating ? "72%" : "24%",
+                    }}
                   />
-                </div>
 
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  {[
-                    { label: "Base Time", value: result.duration },
-                    { label: "Traffic", value: result.traffic },
-                    { label: "Safety Buffer", value: result.buffer },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="rounded-2xl border border-white/10 bg-white/5 p-4"
-                    >
-                      <p className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 text-lg font-semibold text-white">
-                        {item.value}
-                      </p>
+                  <div className="absolute left-[20%] top-[58%] rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-slate-200 backdrop-blur-md animate-[floatCard_5s_ease-in-out_infinite]">
+                    Journey Time
+                    <div className="mt-1 text-lg font-semibold text-white">
+                      {result.duration}
                     </div>
-                  ))}
-                </div>
+                  </div>
 
+                  <div className="absolute left-[45%] top-[28%] rounded-2xl border border-sky-300/20 bg-sky-400/10 px-4 py-3 text-sm text-sky-100 backdrop-blur-md animate-[floatCard_6s_ease-in-out_infinite] [animation-delay:600ms]">
+                    Traffic Exposure
+                    <div className="mt-1 text-lg font-semibold text-white">
+                      {result.traffic}
+                    </div>
+                  </div>
+
+                  <div className="absolute right-[18%] top-[48%] rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-slate-200 backdrop-blur-md animate-[floatCard_5.5s_ease-in-out_infinite] [animation-delay:900ms]">
+                    Safety Buffer
+                    <div className="mt-1 text-lg font-semibold text-white">
+                      {result.buffer}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
                 <div
-                  className={`mt-5 rounded-[24px] border border-sky-300/20 bg-sky-400/10 p-5 transition duration-500 ${
-                    animateResult ? "scale-[1.01] shadow-[0_0_40px_rgba(56,189,248,0.15)]" : ""
+                  className={`rounded-[28px] border border-sky-300/20 bg-sky-400/10 p-5 transition duration-500 ${
+                    hasCalculated
+                      ? "shadow-[0_0_40px_rgba(56,189,248,0.14)]"
+                      : ""
                   }`}
                 >
                   <p className="text-xs uppercase tracking-[0.25em] text-sky-200">
                     Optimal Cover
                   </p>
-                  <div className="mt-2 flex items-end justify-between gap-4">
+                  <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
                     <div>
-                      <p className="text-3xl font-semibold md:text-4xl">
+                      <p className="text-3xl font-semibold md:text-5xl">
                         {isCalculating ? "Thinking..." : result.cover}
                       </p>
-                      <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">
+                      <p className="mt-3 max-w-xl text-sm leading-6 text-slate-200">
                         {isCalculating
-                          ? "Analysing route length, congestion exposure, and resilience margin."
-                          : result.insight}
+                          ? "Analysing route conditions, travel span, and resilience margin."
+                          : result.confidence}
                       </p>
                     </div>
-                    <div className="hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right md:block">
-                      <p className="text-[11px] uppercase tracking-[0.2em] text-slate-500">
+
+                    <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-right">
+                      <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
                         Outcome
                       </p>
                       <p className="mt-2 text-sm font-medium text-white">
@@ -287,15 +290,42 @@ export default function RouteInsuranceHero() {
                     </div>
                   </div>
                 </div>
+
+                <div className="rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-md">
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                    Why this matters
+                  </p>
+                  <div className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                    <p>
+                      Traditional temporary cover still makes the user decide the
+                      time window manually.
+                    </p>
+                    <p>
+                      This concept flips the experience: the route becomes the
+                      input, and the policy window becomes the outcome.
+                    </p>
+                    <p className="text-sky-200">
+                      That is the shift from insurance selection to insurance
+                      intelligence.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <button className="rounded-2xl bg-sky-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]">
-                  Explore the Concept
-                </button>
-                <button className="rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:border-sky-300/30 hover:bg-sky-400/10">
-                  See How It Works
-                </button>
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap gap-3">
+                  <button className="rounded-2xl bg-sky-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]">
+                    Explore the Concept
+                  </button>
+                  <button className="rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:border-sky-300/30 hover:bg-sky-400/10">
+                    See Product Logic
+                  </button>
+                </div>
+
+                <p className="max-w-xl text-sm leading-6 text-slate-400">
+                  A full-width product pitch demo designed to show how Simcolabs
+                  turns ideas into intelligent, visual, buildable concepts.
+                </p>
               </div>
             </div>
           </div>
@@ -303,16 +333,62 @@ export default function RouteInsuranceHero() {
       </div>
 
       <style>{`
-        @keyframes route-travel {
-          0% { left: 10%; top: 62%; opacity: 0.85; }
-          30% { left: 30%; top: 66%; opacity: 1; }
-          55% { left: 48%; top: 48%; opacity: 1; }
-          78% { left: 64%; top: 34%; opacity: 1; }
-          100% { left: 78%; top: 20%; opacity: 0.95; }
+        @keyframes route-glide {
+          0% {
+            left: 6%;
+            top: 72%;
+            opacity: 0.85;
+            transform: scale(0.95);
+          }
+          25% {
+            left: 25%;
+            top: 74%;
+            opacity: 1;
+            transform: scale(1);
+          }
+          45% {
+            left: 42%;
+            top: 50%;
+            opacity: 1;
+          }
+          65% {
+            left: 62%;
+            top: 35%;
+            opacity: 1;
+          }
+          85% {
+            left: 77%;
+            top: 40%;
+            opacity: 1;
+          }
+          100% {
+            left: 88%;
+            top: 24%;
+            opacity: 0.95;
+            transform: scale(1.05);
+          }
         }
 
-        .animate-route-travel {
-          animation: route-travel 1.35s ease-in-out forwards;
+        @keyframes floatCard {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes heroSweep {
+          0% {
+            transform: translateX(-35%);
+          }
+          100% {
+            transform: translateX(35%);
+          }
+        }
+
+        .animate-route-glide {
+          animation: route-glide 1.45s ease-in-out forwards;
         }
       `}</style>
     </section>
