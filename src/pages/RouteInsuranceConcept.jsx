@@ -1,4 +1,4 @@
-import RouteInsuranceHero from "../components/heros/RouteInsuranceHero";
+import RouteInsuranceHero from "../components/heroes/RouteInsuranceHero";
 
 export default function RouteInsuranceConcept() {
   return (

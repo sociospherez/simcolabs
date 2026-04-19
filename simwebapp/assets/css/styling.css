@@ -31,6 +31,71 @@
       overflow-x:hidden;
     }
 
+/* Theme toggle */
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #f59e0b;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.3s ease,
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.08);
+}
+
+body.night .theme-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #60a5fa;
+  box-shadow: none;
+}
+
+.theme-icon {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.theme-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.visible-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.hidden-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.65);
+}
+
+.theme-icon.moon.hidden-icon {
+  transform: rotate(-90deg) scale(0.65);
+}
+
+
     .page-grid,
     .page-noise,
     .page-glow{
@@ -127,7 +192,7 @@
       z-index:-1;
     }
     .hero-wave{
-      position:absolute;left:0;right:0;bottom:-1px;z-index:-1;opacity:.9;
+      position:absolute;left:0;right:0;bottom:-1px;z-index:-1;opacity:.5;
     }
 
     .eyebrow{
