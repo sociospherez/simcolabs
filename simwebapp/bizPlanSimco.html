@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SimcoLabs | Research & Innovation Plan</title>
+  <meta name="description" content="A standalone SimcoLabs business plan and positioning page for research, simulation, learning, and consultation-led engagement." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: radial-gradient(circle at top left, rgba(79, 139, 255, 0.12), transparent 30%), radial-gradient(circle at top right, rgba(79, 203, 255, 0.12), transparent 26%), linear-gradient(180deg, #06101d 0%, #091626 100%);
+      --panel: rgba(10, 18, 32, 0.72);
+      --panel-strong: rgba(15, 24, 42, 0.88);
+      --border: rgba(255,255,255,0.10);
+      --text: #eaf2ff;
+      --muted: #b5c3da;
+      --subtle: #89a0bf;
+      --accent: #79c4ff;
+      --accent-strong: #9fe0ff;
+      --shadow: 0 22px 60px rgba(0,0,0,0.35);
+      --card-blur: blur(18px);
+      --button-text: #06101d;
+      --hero-overlay: linear-gradient(135deg, rgba(121,196,255,0.14), rgba(255,255,255,0.02));
+    }
+
+    body.light {
+      --bg: #eef4fb;
+      --bg-soft: radial-gradient(circle at top left, rgba(91, 145, 255, 0.13), transparent 30%), radial-gradient(circle at top right, rgba(71, 186, 255, 0.14), transparent 22%), linear-gradient(180deg, #f6f9fd 0%, #e9f1fb 100%);
+      --panel: rgba(255,255,255,0.80);
+      --panel-strong: rgba(255,255,255,0.94);
+      --border: rgba(10,20,40,0.09);
+      --text: #0b1930;
+      --muted: #30425c;
+      --subtle: #5a6d87;
+      --accent: #1267c8;
+      --accent-strong: #0f5eb8;
+      --shadow: 0 22px 60px rgba(38, 68, 115, 0.10);
+      --button-text: #ffffff;
+      --hero-overlay: linear-gradient(135deg, rgba(18,103,200,0.08), rgba(255,255,255,0.30));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-soft);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page-shell {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .page-shell::before,
+    .page-shell::after {
+      content: "";
+      position: fixed;
+      width: 38rem;
+      height: 38rem;
+      border-radius: 999px;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 0.22;
+      z-index: 0;
+    }
+    .page-shell::before {
+      top: -10rem;
+      left: -14rem;
+      background: rgba(105, 175, 255, 0.28);
+    }
+    .page-shell::after {
+      right: -15rem;
+      top: 22rem;
+      background: rgba(82, 203, 255, 0.20);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      padding: 1rem 0;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .brand-title {
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a,
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: rgba(121,196,255,0.38);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .glass-card {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      backdrop-filter: var(--card-blur);
+      -webkit-backdrop-filter: var(--card-blur);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+    }
+
+    .hero-copy {
+      padding: 2rem;
+      background-image: var(--hero-overlay);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 1.45rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+    }
+
+    .button {
+      background: var(--accent);
+      color: var(--button-text);
+      border-color: transparent;
+    }
+
+    .button:hover,
+    .button-secondary:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hero-side {
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .mini-card span {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .mini-card strong {
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 1.25rem 0 2rem;
+    }
+
+    .metric {
+      padding: 1.1rem 1.15rem;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section.block {
+      padding: 1rem 0 1.5rem;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-head p {
+      max-width: 58ch;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .grid-3,
+    .grid-2,
+    .grid-4 {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .panel {
+      padding: 1.4rem;
+    }
+
+    .panel h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .panel p,
+    .panel li,
+    .timeline p,
+    .timeline li {
+      color: var(--muted);
+    }
+
+    ul.clean {
+      padding-left: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0.3rem;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0.7;
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 1.3rem;
+      padding-left: 1.25rem;
+    }
+
+    .timeline-step:last-child { margin-bottom: 0; }
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -0.02rem;
+      top: 0.4rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(121,196,255,0.14);
+    }
+
+    .timeline-step small {
+      display: block;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .comparison {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .comparison th,
+    .comparison td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .comparison th {
+      color: var(--text);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .comparison td { color: var(--muted); }
+    .comparison tr:last-child td { border-bottom: none; }
+
+    .cta {
+      padding: 2rem;
+      margin: 1rem 0 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      color: var(--subtle);
+      font-size: 0.92rem;
+      padding-bottom: 2rem;
+      text-align: center;
+    }
+
+    .muted { color: var(--muted); }
+
+    @media (max-width: 960px) {
+      .hero-panel,
+      .grid-3,
+      .grid-4,
+      .metrics,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+      h1 { max-width: 100%; }
+      .topbar-inner {
+        align-items: start;
+        flex-direction: column;
+      }
+      .nav-links { justify-content: flex-start; }
+      .cta { align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="container topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-kicker">SimcoLabs</span>
+          <div class="brand-title">Research, simulation, education, and consultation-led growth</div>
+        </div>
+        <div class="nav-links">
+          <a href="#model">Model</a>
+          <a href="#journey">Journey</a>
+          <a href="#plan">Plan</a>
+          <a href="#contact">Engage</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾ Theme</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero" id="top">
+        <div class="hero-panel">
+          <div class="glass-card hero-copy">
+            <div class="eyebrow">Research platform / practical thinking / real conversations</div>
+            <h1>Helping people see the shape of an idea before they commit to building it.</h1>
+            <p class="lead">
+              SimcoLabs is a standalone research and innovation environment where ideas are explored, concepts are visualised, MVPs are framed, and serious conversations can begin from a place of clarity rather than noise.
+            </p>
+            <p class="lead">
+              The purpose is not to sell a generic service brochure. The purpose is to create enough insight, structure, and curiosity that the right people naturally want to explore what comes next.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#contact">Start a conversation</a>
+              <a class="button-secondary" href="#plan">View the operating plan</a>
+            </div>
+          </div>
+
+          <div class="glass-card hero-side">
+            <div class="mini-card">
+              <span>Core identity</span>
+              <strong>A digital research and simulation lab</strong>
+              <p>Built to explore complex themes through case studies, visual storytelling, concept models, and practical transformation thinking.</p>
+            </div>
+            <div class="mini-card">
+              <span>Commercial intent</span>
+              <strong>Consultation follows curiosity</strong>
+              <p>When a concept, framework, or MVP resonates, that interest can move naturally into advisory, design, or transformation support.</p>
+            </div>
+            <div class="mini-card">
+              <span>Educational layer</span>
+              <strong>Self-education is part of the offer</strong>
+              <p>The site also acts as a learning environment where visitors can understand emerging ideas, systems thinking, and strategic direction in a clearer way.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="metrics">
+        <div class="glass-card metric"><strong>01</strong><span>Research-led credibility</span></div>
+        <div class="glass-card metric"><strong>02</strong><span>Visual and interactive explanation</span></div>
+        <div class="glass-card metric"><strong>03</strong><span>MVP and concept showcase</span></div>
+        <div class="glass-card metric"><strong>04</strong><span>Consultation and collaboration pathway</span></div>
+      </div>
+
+      <section class="block" id="model">
+        <div class="section-head">
+          <div>
+            <h2>The operating model</h2>
+            <p>This is not a retail business and not a standard consulting website. It is a layered environment where research builds trust, simulation builds engagement, and consultation becomes the natural next step.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="glass-card panel">
+            <h3>1. Research layer</h3>
+            <p>Case studies, strategic writeups, issue mapping, visual essays, and structured thought pieces that help people understand a topic rather than just skim over it.</p>
+            <div class="pill-row">
+              <span class="pill">Thought leadership</span>
+              <span class="pill">Case studies</span>
+              <span class="pill">Explainers</span>
+            </div>
+          </article>
+          <article class="glass-card panel">
+            <h3>2. Simulation layer</h3>
+            <p>Concept journeys, MVP mockups, scenario thinking, dashboards, framework pages, and other ways of showing how an idea might work in reality.</p>
+            <div class="pill-row">
+              <span class="pill">MVP framing</span>
+              <span class="pill">Interactive concepts</span>
+              <span class="pill">Visual logic</span>
+            </div>
+          </article>
+          <article class="glass-card panel">
+            <h3>3. Conversion layer</h3>
+            <p>Once a visitor sees relevance and practical value, the site offers a route into conversation, collaboration, advisory support, or deeper concept development.</p>
+            <div class="pill-row">
+              <span class="pill">Consultation</span>
+              <span class="pill">Discovery calls</span>
+              <span class="pill">Engagements</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="difference">
+        <div class="section-head">
+          <div>
+            <h2>Why this approach matters</h2>
+            <p>The difference is subtle but commercially important: instead of asking people to believe a service promise, SimcoLabs helps them experience the logic of the idea first.</p>
+          </div>
+        </div>
+
+        <table class="comparison" aria-label="Traditional consulting versus SimcoLabs approach">
+          <thead>
+            <tr>
+              <th>Traditional consulting site</th>
+              <th>SimcoLabs approach</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Leads with services and credentials</td>
+              <td>Leads with insight, exploration, and practical conceptual clarity</td>
+            </tr>
+            <tr>
+              <td>Asks the visitor to imagine the value</td>
+              <td>Shows the value through research, visual thinking, and prototype logic</td>
+            </tr>
+            <tr>
+              <td>Usually static and brochure-like</td>
+              <td>Feels more like a lab, journal, and demonstration space</td>
+            </tr>
+            <tr>
+              <td>Conversion depends on direct service appetite</td>
+              <td>Conversion emerges from curiosity, alignment, and relevance</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="block" id="journey">
+        <div class="section-head">
+          <div>
+            <h2>How a visitor moves through the experience</h2>
+            <p>The journey is designed to be intelligent but simple. No labyrinths. No corporate fog machine. Just a clearer route from interest to action.</p>
+          </div>
+        </div>
+
+        <div class="glass-card panel timeline">
+          <div class="timeline-step">
+            <small>Stage 01</small>
+            <h3>Discovery through content</h3>
+            <p>A visitor lands on a case study, concept page, essay, or simulation-led experience and quickly understands that the site is built around structured thinking.</p>
+          </div>
+          <div class="timeline-step">
+            <small>Stage 02</small>
+            <h3>Engagement through clarity</h3>
+            <p>Visual models, practical examples, and MVP-style pages help them see how the idea translates from theory into something more tangible.</p>
+          </div>
+          <div class="timeline-step">
+            <small>Stage 03</small>
+            <h3>Trust through relevance</h3>
+            <p>As the visitor recognises the depth, logic, and usefulness of the material, the platform starts to feel credible as more than just a portfolio.</p>
+          </div>
+          <div class="timeline-step">
+            <small>Stage 04</small>
+            <h3>Action through conversation</h3>
+            <p>Where there is fit, the next step becomes consultation, collaboration, advisory support, or a deeper exploration of the concept itself.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="audience">
+        <div class="section-head">
+          <div>
+            <h2>Audience and value</h2>
+            <p>SimcoLabs is relevant to organisations, founders, public-sector thinkers, innovation-minded teams, and individuals who want to make sense of complex territory before making bigger commitments.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="glass-card panel">
+            <h3>Who it is for</h3>
+            <ul class="clean">
+              <li>Businesses exploring transformation, innovation, or platform direction</li>
+              <li>Decision-makers who need sharper strategic framing before investment</li>
+              <li>Teams interested in emerging concepts, operating models, or MVP opportunities</li>
+              <li>Individuals who want to self-educate through structured and visual exploration</li>
+            </ul>
+          </article>
+          <article class="glass-card panel">
+            <h3>What value it creates</h3>
+            <ul class="clean">
+              <li>It makes complex ideas easier to understand and discuss</li>
+              <li>It helps turn abstract opportunities into visible pathways</li>
+              <li>It supports credibility before a formal engagement begins</li>
+              <li>It allows consultation to begin from a more mature place</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="plan">
+        <div class="section-head">
+          <div>
+            <h2>Business plan summary</h2>
+            <p>This is the concise version of the business plan reframed correctly for SimcoLabs as a research, education, and consultation-led platform.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="glass-card panel">
+            <h3>Business idea</h3>
+            <p>SimcoLabs is a digital platform where research, concept thinking, case studies, and prototype-style experiences are used to explore complex themes and open doors to real engagements.</p>
+          </article>
+          <article class="glass-card panel">
+            <h3>Problem being solved</h3>
+            <p>Many worthwhile ideas fail early because they are too vague, too static, or too poorly explained. SimcoLabs helps make those ideas more visible, structured, and discussable.</p>
+          </article>
+          <article class="glass-card panel">
+            <h3>Income model</h3>
+            <p>Revenue is expected to come from consultation, strategic advisory work, concept development, research-led collaborations, and custom MVP or framework support.</p>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem;">
+          <article class="glass-card panel">
+            <h3>First 12–24 months</h3>
+            <ul class="clean">
+              <li>Publish a meaningful portfolio of research and case-led pages</li>
+              <li>Develop several MVP and simulation-style showcases</li>
+              <li>Strengthen the educational layer of the site</li>
+              <li>Convert selected interest into advisory conversations and practical engagements</li>
+            </ul>
+          </article>
+          <article class="glass-card panel">
+            <h3>Practical needs</h3>
+            <ul class="clean">
+              <li>Strong website structure and clear thematic navigation</li>
+              <li>Simple, maintainable page templates in HTML</li>
+              <li>Time for writing, curation, and visual concept development</li>
+              <li>A consistent route for enquiries and consultation requests</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="goals">
+        <div class="section-head">
+          <div>
+            <h2>Milestones and focus areas</h2>
+            <p>A realistic path forward keeps the site useful, alive, and commercially relevant without turning it into a bloated digital museum of abandoned good intentions.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="glass-card panel">
+            <h3>Next 3 months</h3>
+            <ul class="clean">
+              <li>Establish the core standalone pages and visual rhythm</li>
+              <li>Clarify site sections for research, concepts, and engagement</li>
+              <li>Publish the first wave of sharpened content</li>
+            </ul>
+          </article>
+          <article class="glass-card panel">
+            <h3>Next 6 months</h3>
+            <ul class="clean">
+              <li>Introduce stronger concept journeys and selected MVP showcases</li>
+              <li>Refine enquiry pathways around the most relevant themes</li>
+              <li>Strengthen educational content for self-guided exploration</li>
+            </ul>
+          </article>
+          <article class="glass-card panel">
+            <h3>Next 12 months</h3>
+            <ul class="clean">
+              <li>Build recognisable credibility around chosen SimcoLabs themes</li>
+              <li>Use the platform to support real collaborative opportunities</li>
+              <li>Create a clearer bridge between research insight and paid engagement</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="contact">
+        <div class="glass-card cta">
+          <div>
+            <div class="eyebrow" style="margin-bottom:0.75rem;">If the idea resonates</div>
+            <h2 style="margin-bottom:0.6rem;">Let the conversation begin where the thinking already has depth.</h2>
+            <p class="muted" style="max-width:60ch; margin-bottom:0;">This page is designed to show that SimcoLabs is not only a research environment, but also a route into thoughtful collaboration when an idea, concept, or direction feels worth developing further.</p>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <a class="button" href="mailto:hello@simcolabs.uk">Email SimcoLabs</a>
+            <a class="button-secondary" href="https://www.simcolabs.uk/WhoMe.html">View executive intro</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        Standalone HTML page for SimcoLabs · built to align with the tone and structure of the existing executive introduction page.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggle = document.getElementById('themeToggle');
+      const stored = localStorage.getItem('simco-theme');
+      const preferredLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+      if (stored === 'light' || (!stored && preferredLight)) {
+        body.classList.add('light');
+      }
+
+      function syncLabel() {
+        toggle.textContent = body.classList.contains('light') ? '☀ Theme' : '☾ Theme';
+      }
+
+      toggle.addEventListener('click', function () {
+        body.classList.toggle('light');
+        localStorage.setItem('simco-theme', body.classList.contains('light') ? 'light' : 'dark');
+        syncLabel();
+      });
+
+      syncLabel();
+    })();
+  </script>
+</body>
+</html>
