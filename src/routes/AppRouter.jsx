@@ -9,6 +9,8 @@ import ProjectDetail from "../pages/ProjectDetail";
 import LabInterface from "../pages/LabInterface";
 import TransformationBrief from "../pages/TransformationBrief";
 import RouteInsuranceConcept from "../pages/RouteInsuranceConcept";
+import GA2020Dashboard from "../pages/GA2020Dashboard";
+
 
 export default function AppRouter() {
   return (
@@ -23,6 +25,7 @@ export default function AppRouter() {
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/transformation-brief" element={<TransformationBrief />} />
         <Route path="/route-insurance" element={<RouteInsuranceConcept />} />
+        <Route path="/projects/ga2020-sector-dashboard" element={<GA2020Dashboard />} />
 
       </Routes>
     </PageShell>
