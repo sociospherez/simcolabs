@@ -57,7 +57,19 @@ function parseCSV(text) {
   row.push(cur);
   if (row.some((c) => c !== "")) rows.push(row);
 
-  const header = rows[0] || [];
+  const headerIndex = rows.findIndex((r) =>
+  r.includes("RP_code") && r.includes("RP_name")
+);
+
+const header = headerIndex !== -1 ? rows[headerIndex] : rows[0];
+
+const data = rows.slice(headerIndex + 1).map((r) => {
+  const obj = {};
+  header.forEach((h, idx) => {
+    obj[h] = r[idx] ?? "";
+  });
+  return obj;
+});
   const data = rows.slice(1).map((r) => {
     const obj = {};
     header.forEach((h, idx) => {
@@ -166,9 +178,9 @@ export default function GA2020Dashboard() {
       {
         key: "orgName",
         label: "Organisation name",
-        value: pick([/provider|organisation|organization|name/i]),
+        value: pick([/^RP_name$/i, /provider|organisation|organization|name/i]),
       },
-      {
+        {
         key: "turnover",
         label: "Turnover / total income",
         value: pick([/turnover/i, /total\s*income/i, /^income$/i]),
