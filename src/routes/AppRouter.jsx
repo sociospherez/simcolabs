@@ -9,6 +9,8 @@ import ProjectDetail from "../pages/ProjectDetail";
 import LabInterface from "../pages/LabInterface";
 import TransformationBrief from "../pages/TransformationBrief";
 import RouteInsuranceConcept from "../pages/RouteInsuranceConcept";
+import HaveringElectionDashboard from "../pages/HaveringElectionDashboard";
+
 
 export default function AppRouter() {
   return (
@@ -23,6 +25,8 @@ export default function AppRouter() {
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/transformation-brief" element={<TransformationBrief />} />
         <Route path="/route-insurance" element={<RouteInsuranceConcept />} />
+        <Route path="/havering-election-dashboard" element={<HaveringElectionDashboard />} />
+
 
       </Routes>
     </PageShell>
