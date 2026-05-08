@@ -7,8 +7,7 @@ const navigation = [
   { label: 'Lab Interface', path: '/lab-interface' },
   //{ label: 'Transformation', path: '/tranformation-brief' },
   { label: "Concept", path: "/route-insurance"},
-  { label: "Civic Intel", path: "/havering-election-dashboard" },
-
+  { label: "Civic Intel", path: "/civic-election-dashboard"},
 
 ];
 
