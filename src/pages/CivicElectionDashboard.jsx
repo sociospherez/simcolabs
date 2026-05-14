@@ -13,10 +13,18 @@ const boroughs = {
   redbridge: {
     label: "Redbridge",
     file: "/data/redbridge_elections_master_v1.csv",
-    status: "Candidate dataset / votes pending",
+    status: "Declared dataset",
     accent: "#7C3AED",
     source: "https://www.redbridge.gov.uk/voting-and-elections/local-election-results/",
-    narrative: "Candidate and turnout intelligence is ready; vote metrics will activate automatically when the count values are added.",
+    narrative: "Declared ward-level results, turnout, vote-share and seat intelligence for Redbridge.",
+  },
+  greenwich: {
+    label: "Greenwich",
+    file: "/data/greenwich_elections_master_v1.csv",
+    status: "Declared dataset",
+    accent: "#02A95B",
+    source: "https://www.royalgreenwich.gov.uk/council-and-elections/elections-and-voting/2026-local-elections-results",
+    narrative: "Declared ward-level results and turnout intelligence for the Royal Borough of Greenwich.",
   },
 };
 
