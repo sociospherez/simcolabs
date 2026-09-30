@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Camera Viewer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #101010;
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .camera-app {
+            width: min(1100px, 100%);
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        #status {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .camera-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        #camera {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+            transform: scale(1);
+            transform-origin: center center;
+
+            transition: transform 0.15s ease;
+        }
+
+        .live-label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: rgba(0,0,0,0.65);
+            padding: 7px 11px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            margin-top: 15px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        select,
+        button {
+            background: #222;
+            color: white;
+
+            border: 1px solid #444;
+
+            padding: 10px 14px;
+
+            font-size: 14px;
+        }
+
+        select {
+            min-width: 250px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .zoom-display {
+            min-width: 65px;
+            text-align: center;
+
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        #snapshotArea {
+            display: none;
+            margin-top: 30px;
+        }
+
+        #snapshot {
+            width: 100%;
+            max-width: 700px;
+            border: 1px solid #333;
+        }
+
+        .snapshot-title {
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="camera-app">
+
+    <div class="topbar">
+
+        <h2>Camera View</h2>
+
+        <div id="status">
+            Looking for cameras...
+        </div>
+
+    </div>
+
+
+    <div class="camera-frame">
+
+        <video
+            id="camera"
+            autoplay
+            playsinline>
+        </video>
+
+        <div class="live-label">
+            ● LIVE
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        <select id="cameraSelect"></select>
+
+
+        <button id="zoomOut">
+            − Zoom
+        </button>
+
+        <div
+            class="zoom-display"
+            id="zoomDisplay">
+            1.0×
+        </div>
+
+        <button id="zoomIn">
+            + Zoom
+        </button>
+
+
+        <button id="resetZoom">
+            Reset
+        </button>
+
+
+        <button id="takePhoto">
+            📷 Take Picture
+        </button>
+
+    </div>
+
+
+    <div id="snapshotArea">
+
+        <div class="snapshot-title">
+            Captured Image
+        </div>
+
+        <canvas
+            id="snapshot">
+        </canvas>
+
+        <br>
+
+        <button
+            id="downloadPhoto"
+            style="margin-top:10px;">
+            Download Picture
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const video =
+    document.getElementById("camera");
+
+const cameraSelect =
+    document.getElementById("cameraSelect");
+
+const status =
+    document.getElementById("status");
+
+const zoomDisplay =
+    document.getElementById("zoomDisplay");
+
+const canvas =
+    document.getElementById("snapshot");
+
+const snapshotArea =
+    document.getElementById("snapshotArea");
+
+
+let currentStream = null;
+
+let zoom = 1;
+
+
+
+/* ----------------------------------
+   CAMERA LIST
+---------------------------------- */
+
+async function loadCameras() {
+
+    if (!navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia) {
+
+        status.innerText =
+            "Camera API unavailable.";
+
+        return;
+    }
+
+
+    try {
+
+        /*
+        Request permission first so that
+        camera names become visible.
+        */
+
+        const permissionStream =
+            await navigator.mediaDevices
+                .getUserMedia({
+                    video: true,
+                    audio: false
+                });
+
+
+        permissionStream
+            .getTracks()
+            .forEach(track =>
+                track.stop()
+            );
+
+
+        const devices =
+            await navigator.mediaDevices
+                .enumerateDevices();
+
+
+        const cameras =
+            devices.filter(
+                device =>
+                    device.kind === "videoinput"
+            );
+
+
+        cameraSelect.innerHTML = "";
+
+
+        cameras.forEach(
+            (camera, index) => {
+
+                const option =
+                    document.createElement("option");
+
+
+                option.value =
+                    camera.deviceId;
+
+
+                option.textContent =
+                    camera.label ||
+                    `Camera ${index + 1}`;
+
+
+                cameraSelect
+                    .appendChild(option);
+            }
+        );
+
+
+        if (cameras.length === 0) {
+
+            status.innerText =
+                "No cameras found.";
+
+            return;
+        }
+
+
+        status.innerText =
+            `${cameras.length} camera(s) available`;
+
+
+        await startCamera();
+
+    }
+
+    catch (error) {
+
+        status.innerText =
+            `${error.name}: ${error.message}`;
+
+    }
+
+}
+
+
+
+/* ----------------------------------
+   START SELECTED CAMERA
+---------------------------------- */
+
+async function startCamera() {
+
+    if (currentStream) {
+
+        currentStream
+            .getTracks()
+            .forEach(
+                track =>
+                    track.stop()
+            );
+
+    }
+
+
+    try {
+
+        currentStream =
+            await navigator.mediaDevices
+                .getUserMedia({
+
+                    video: {
+
+                        deviceId: {
+                            exact:
+                                cameraSelect.value
+                        },
+
+                        width: {
+                            ideal: 1920
+                        },
+
+                        height: {
+                            ideal: 1080
+                        }
+
+                    },
+
+                    audio: false
+
+                });
+
+
+        video.srcObject =
+            currentStream;
+
+
+        const selected =
+            cameraSelect.options[
+                cameraSelect.selectedIndex
+            ];
+
+
+        status.innerText =
+            "Connected: " +
+            selected.textContent;
+
+
+        resetZoom();
+
+    }
+
+    catch (error) {
+
+        status.innerText =
+            `Camera error: ${error.message}`;
+
+    }
+
+}
+
+
+
+/* ----------------------------------
+   DIGITAL ZOOM
+---------------------------------- */
+
+function updateZoom() {
+
+    video.style.transform =
+        `scale(${zoom})`;
+
+
+    zoomDisplay.innerText =
+        zoom.toFixed(1) + "×";
+
+}
+
+
+function zoomIn() {
+
+    zoom += 0.2;
+
+    if (zoom > 4) {
+        zoom = 4;
+    }
+
+    updateZoom();
+
+}
+
+
+function zoomOut() {
+
+    zoom -= 0.2;
+
+    if (zoom < 1) {
+        zoom = 1;
+    }
+
+    updateZoom();
+
+}
+
+
+function resetZoom() {
+
+    zoom = 1;
+
+    updateZoom();
+
+}
+
+
+
+/* ----------------------------------
+   TAKE PICTURE
+---------------------------------- */
+
+function takePhoto() {
+
+    if (!video.videoWidth) {
+        return;
+    }
+
+
+    const width =
+        video.videoWidth;
+
+    const height =
+        video.videoHeight;
+
+
+    canvas.width =
+        width;
+
+    canvas.height =
+        height;
+
+
+    const context =
+        canvas.getContext("2d");
+
+
+    /*
+    We crop the actual image according
+    to the digital zoom level.
+    */
+
+
+    const cropWidth =
+        width / zoom;
+
+    const cropHeight =
+        height / zoom;
+
+
+    const cropX =
+        (width - cropWidth) / 2;
+
+    const cropY =
+        (height - cropHeight) / 2;
+
+
+    context.drawImage(
+
+        video,
+
+        cropX,
+        cropY,
+
+        cropWidth,
+        cropHeight,
+
+        0,
+        0,
+
+        width,
+        height
+
+    );
+
+
+    snapshotArea.style.display =
+        "block";
+
+}
+
+
+
+/* ----------------------------------
+   DOWNLOAD PICTURE
+---------------------------------- */
+
+function downloadPhoto() {
+
+    const link =
+        document.createElement("a");
+
+
+    const now =
+        new Date();
+
+
+    link.download =
+        "camera-" +
+        now.getTime() +
+        ".jpg";
+
+
+    link.href =
+        canvas.toDataURL(
+            "image/jpeg",
+            0.95
+        );
+
+
+    link.click();
+
+}
+
+
+
+/* ----------------------------------
+   EVENTS
+---------------------------------- */
+
+cameraSelect
+    .addEventListener(
+        "change",
+        startCamera
+    );
+
+
+document
+    .getElementById("zoomIn")
+    .addEventListener(
+        "click",
+        zoomIn
+    );
+
+
+document
+    .getElementById("zoomOut")
+    .addEventListener(
+        "click",
+        zoomOut
+    );
+
+
+document
+    .getElementById("resetZoom")
+    .addEventListener(
+        "click",
+        resetZoom
+    );
+
+
+document
+    .getElementById("takePhoto")
+    .addEventListener(
+        "click",
+        takePhoto
+    );
+
+
+document
+    .getElementById("downloadPhoto")
+    .addEventListener(
+        "click",
+        downloadPhoto
+    );
+
+
+
+/* ----------------------------------
+   START
+---------------------------------- */
+
+loadCameras();
+
+</script>
+
+</body>
+</html>
