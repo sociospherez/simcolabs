@@ -1,0 +1,3 @@
+# Local SEND Guard build and visual QA artifacts
+.send-guard-build/
+review/
