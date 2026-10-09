@@ -10,6 +10,7 @@ import LabInterface from "../pages/LabInterface";
 import TransformationBrief from "../pages/TransformationBrief";
 import RouteInsuranceConcept from "../pages/RouteInsuranceConcept";
 import CivicElectionDashboard from "../pages/CivicElectionDashboard";
+import SendGuardPage from "../components/Projects/send-guard/SendGuardPage";
 
 export default function AppRouter() {
   return (
@@ -22,6 +23,7 @@ export default function AppRouter() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/lab-interface" element={<LabInterface />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
+        <Route path="/send-guard/provision-explorer" element={<SendGuardPage />} />
         <Route path="/transformation-brief" element={<TransformationBrief />} />
         <Route path="/route-insurance" element={<RouteInsuranceConcept />} />
         <Route path="/civic-election-dashboard" element={<CivicElectionDashboard />} />
