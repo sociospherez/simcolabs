@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeeshan Abbasi | Product, Technology & Transformation</title>
+<meta name="description" content="Executive product and technology transformation profile for Zeeshan Abbasi.">
+<style>
+  :root{
+    --ink:#171717; --muted:#696969; --soft:#f4f2ed; --line:#d8d4cc; --accent:#9c7a45;
+    --paper:#fbfaf7; --white:#fff; --max:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+  .eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1,h2,h3,p{margin-top:0}
+  h1{font-size:clamp(3rem,7vw,6.7rem);line-height:.94;letter-spacing:-.055em;font-weight:500;max-width:1000px;margin-bottom:28px}
+  h2{font-size:clamp(2rem,4vw,3.45rem);line-height:1.03;letter-spacing:-.04em;font-weight:500;margin-bottom:18px}
+  h3{font-size:1.08rem;line-height:1.2;margin-bottom:8px}
+  .lead{font-size:clamp(1.18rem,2vw,1.55rem);line-height:1.5;color:#393939;max-width:850px}
+  .muted{color:var(--muted)}
+  .hero{min-height:88vh;padding:76px 0 56px;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
+  .hero-top{position:absolute;top:0;left:0;right:0;padding:28px 0}
+  .brandbar{display:flex;justify-content:space-between;gap:24px;align-items:center;font-size:.9rem}
+  .brandbar .name{font-weight:700;letter-spacing:.03em}
+  .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:56px}
+  .hero-meta div{padding:20px 24px 2px 0;border-right:1px solid var(--line)}
+  .hero-meta div:last-child{border-right:0;padding-left:24px}.hero-meta div:nth-child(2){padding-left:24px}
+  .meta-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);display:block;margin-bottom:6px}
+  section{padding:88px 0;border-bottom:1px solid var(--line)}
+  .section-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;margin-bottom:44px}
+  .section-copy{max-width:740px;color:#4e4e4e}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{background:var(--white);border:1px solid var(--line);padding:28px;min-height:190px;transition:.2s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.06)}
+  .card-num{font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:.12em;margin-bottom:32px}
+  .journey{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .journey article{padding:26px 22px;border-right:1px solid var(--line);min-height:245px}.journey article:last-child{border-right:0}
+  .journey strong{display:block;font-size:2rem;font-weight:400;color:var(--accent);margin-bottom:30px}
+  .stories{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .story{background:var(--white);border:1px solid var(--line);padding:34px;min-height:345px;display:flex;flex-direction:column}
+  .story .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:700;margin-bottom:28px}
+  .story h3{font-size:1.7rem;letter-spacing:-.03em;font-weight:500}
+  .story p{color:#555}.story .flow{margin-top:auto;padding-top:28px;border-top:1px solid var(--line);font-size:.84rem;font-weight:700;letter-spacing:.04em}
+  .process{display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin-top:34px;border:1px solid var(--line);background:white}
+  .process div{padding:24px 16px;border-right:1px solid var(--line);min-height:130px}.process div:last-child{border-right:0}
+  .process span{display:block;color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:.1em;margin-bottom:18px}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+  .metric{padding:28px;background:#1d1d1d;color:white;min-height:168px}.metric strong{display:block;font-size:2.6rem;line-height:1;font-weight:400;margin-bottom:16px}.metric small{color:#c7c7c7}
+  .experience{display:grid;grid-template-columns:260px 1fr;gap:56px;padding:38px 0;border-top:1px solid var(--line)}
+  .experience:first-of-type{border-top:0}.role-meta{font-size:.88rem;color:var(--muted)}
+  .role-title{font-size:1.55rem;letter-spacing:-.025em;font-weight:500;margin-bottom:5px}.company{font-weight:700;margin-bottom:4px}
+  ul{margin:14px 0 0;padding-left:19px}li{margin:7px 0;color:#444}
+  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.skills-grid .card{min-height:150px}
+  footer{padding:55px 0 70px}.footer-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:50px}.contact a{display:block;margin:6px 0;color:#444}
+  .print-btn{position:fixed;right:22px;bottom:22px;background:#1d1d1d;color:#fff;padding:12px 16px;border:0;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+  @media(max-width:900px){.section-head,.experience,.footer-grid{grid-template-columns:1fr;gap:24px}.cards{grid-template-columns:repeat(2,1fr)}.journey{grid-template-columns:1fr 1fr}.journey article{border-bottom:1px solid var(--line)}.stories{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:1fr 1fr}.skills-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 28px))}.hero{padding-top:110px;min-height:auto}.brandbar{align-items:flex-start;flex-direction:column;gap:4px}.hero-meta,.cards,.journey,.process,.metrics,.skills-grid{grid-template-columns:1fr}.hero-meta div,.hero-meta div:nth-child(2),.hero-meta div:last-child{padding:16px 0;border-right:0;border-bottom:1px solid var(--line)}.journey article{border-right:0}.process div{border-right:0;border-bottom:1px solid var(--line)}section{padding:64px 0}.print-btn{display:none}}
+  @media print{body{background:#fff}.hero{min-height:auto;padding-top:55px}.hero-top,.print-btn{display:none}section{padding:34px 0}.wrap{width:100%;max-width:none;padding:0 14mm}.card,.story,.metric{break-inside:avoid;box-shadow:none}.journey,.process{break-inside:avoid}a{text-decoration:none}.stories,.cards{gap:8px}}
+</style>
+</head>
+<body>
+  <div class="hero-top"><div class="wrap brandbar"><div class="name">ZEESHAN ABBASI</div><div>Product · Technology · Transformation</div></div></div>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Executive Product Profile</div>
+      <h1>Turning complex technology into products and services that work in reality.</h1>
+      <p class="lead">I work across product strategy, digital transformation and technology delivery — connecting user needs, engineering capability and organisational priorities from roadmap through launch and evolution.</p>
+      <div class="hero-meta">
+        <div><span class="meta-label">Core lens</span>Product + delivery discipline</div>
+        <div><span class="meta-label">Operating range</span>UK · EU · Middle East · Global</div>
+        <div><span class="meta-label">Product value</span>Strategy → Launch → Adoption → Evolution</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">What I bring</div><h2>Product thinking with delivery depth.</h2></div><p class="section-copy">A Software Engineering foundation combined with senior transformation leadership, cross-functional delivery and practical experience moving platforms and services from strategic intent into operational use.</p></div>
+      <div class="cards">
+        <article class="card"><div class="card-num">01</div><h3>Product Strategy</h3><p>Roadmaps, prioritisation, product direction and alignment to organisational value.</p></article>
+        <article class="card"><div class="card-num">02</div><h3>Users & Adoption</h3><p>Understanding operational needs and translating them into usable digital services and change.</p></article>
+        <article class="card"><div class="card-num">03</div><h3>Engineering Delivery</h3><p>Working across software, infrastructure, vendors and technical teams from requirement to release.</p></article>
+        <article class="card"><div class="card-num">04</div><h3>Data & Decisions</h3><p>KPIs, Power BI, DevOps insight and evidence-led prioritisation and optimisation.</p></article>
+        <article class="card"><div class="card-num">05</div><h3>Product & Service Launch</h3><p>Taking platforms and emerging technologies from concept into operational use and evolution.</p></article>
+        <article class="card"><div class="card-num">06</div><h3>AI & Emerging Technology</h3><p>Practical AI, Power Platform, XR and technology innovation with governance and adoption in view.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Career journey</div><h2>From software quality to product and transformation leadership.</h2></div><p class="section-copy">The common thread has been translating business intent into delivery structures that can hold under pressure — while retaining enough technical depth to work credibly with engineering and platform teams.</p></div>
+      <div class="journey">
+        <article><strong>01</strong><h3>Software & Product Foundation</h3><p class="muted">QA, release quality, technical delivery and client-facing work across ~15 software products.</p></article>
+        <article><strong>02</strong><h3>Technology Delivery</h3><p class="muted">Complex programmes, multidisciplinary teams and increasing ownership of outcomes.</p></article>
+        <article><strong>03</strong><h3>Digital Transformation</h3><p class="muted">Enterprise platforms, cloud, workplace technology and operating-model change.</p></article>
+        <article><strong>04</strong><h3>Product & Service Evolution</h3><p class="muted">Roadmaps, adoption, platform maturity and iterative service development.</p></article>
+        <article><strong>05</strong><h3>AI & Emerging Technology</h3><p class="muted">AI, low-code, XR and intelligent workflows grounded in practical organisational value.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Selected product stories</div><h2>Delivery framed through product evolution.</h2></div><p class="section-copy">Selected programmes that show how product thinking has been applied across workplace technology, enterprise platforms, emerging technology and executive insight.</p></div>
+      <div class="stories">
+        <article class="story"><div class="tag">Digital Workplace</div><h3>From remote access to specialist computing</h3><p>Led the evolution of architectural computing through Remote Desktop, Remote Workstations and specialist high-performance capability as user requirements became more demanding.</p><div class="flow">NEED → DELIVER → LEARN → EVOLVE</div></article>
+        <article class="story"><div class="tag">Enterprise Platform</div><h3>Connecting operations through a common digital platform</h3><p>Led the enterprise-wide evolution of Dynamics 365 Business Central across finance, projects, supply chain and operations, aligning users, technical teams, executives and external partners.</p><div class="flow">STRATEGY → PRIORITISATION → DELIVERY → ADOPTION → KPIs</div></article>
+        <article class="story"><div class="tag">Emerging Technology</div><h3>XR as an organisational capability</h3><p>Pioneered Extended Reality within architectural workflows, evaluating practical value and moving capability from experimentation toward an evolving organisational service.</p><div class="flow">EXPLORE → VALIDATE → INTEGRATE → OPERATIONALISE</div></article>
+        <article class="story"><div class="tag">Data & Decisions</div><h3>Turning programme activity into executive visibility</h3><p>Introduced Power BI and DevOps dashboards to convert delivery activity into meaningful KPIs, clearer executive reporting and more informed prioritisation and intervention.</p><div class="flow">RAW DATA → KPIs → INSIGHT → DECISION</div></article>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><strong>£15M+</strong><small>Technology portfolio oversight</small></div>
+        <div class="metric"><strong>15</strong><small>Software products supported in early product / QA leadership</small></div>
+        <div class="metric"><strong>3</strong><small>Regional markets in major transformation delivery</small></div>
+        <div class="metric"><strong>3</strong><small>Phases of digital workplace product evolution</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">How I work</div><h2>A practical product operating rhythm.</h2></div><p class="section-copy">The method is deliberately simple: understand the need, frame the opportunity, make trade-offs visible, deliver with the right people, then learn from use and evidence.</p></div>
+      <div class="process">
+        <div><span>01</span><h3>Understand</h3><p class="muted">User need + organisational goal</p></div>
+        <div><span>02</span><h3>Frame</h3><p class="muted">Opportunity + evidence</p></div>
+        <div><span>03</span><h3>Prioritise</h3><p class="muted">Value + feasibility + risk</p></div>
+        <div><span>04</span><h3>Deliver</h3><p class="muted">Engineering + stakeholders + partners</p></div>
+        <div><span>05</span><h3>Launch</h3><p class="muted">Change + adoption + readiness</p></div>
+        <div><span>06</span><h3>Learn</h3><p class="muted">Data + feedback + iteration</p></div>
+        <div><span>07</span><h3>Evolve</h3><p class="muted">Roadmap + continuous improvement</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Experience</div><h2>Selected career history.</h2></div><p class="section-copy">A concise chronology for recruitment context, with emphasis on product, transformation and engineering collaboration rather than platform labels alone.</p></div>
+
+      <article class="experience"><div><div class="company">Independent Consultant</div><div class="role-meta">Jun 2023 – Present · UK & Remote</div></div><div><div class="role-title">Fractional Transformation Lead</div><p>Lead product, technology transformation and programme-recovery initiatives across SME and mid-market organisations.</p><ul><li>Translate complex operational problems into technology priorities, roadmaps and executable plans.</li><li>Lead cross-functional work across business teams, technical specialists, vendors and platform partners.</li><li>Design Power BI / Power Platform solutions for KPI, risk and transformation visibility.</li><li>Recover at-risk initiatives by re-establishing scope, ownership, priorities and delivery cadence.</li></ul></div></article>
+
+      <article class="experience"><div><div class="company">Foster + Partners</div><div class="role-meta">Sep 2019 – May 2024 · London</div></div><div><div class="role-title">Senior Technology Project Manager</div><p>Led strategic digital products, platforms and technology-transformation initiatives within a global architectural organisation.</p><ul><li>Defined and executed strategic technology plans aligned to organisational priorities and long-term transformation objectives.</li><li>Led enterprise platform evolution across finance, projects, supply chain and operations.</li><li>Led phased digital workplace evolution from Remote Desktop to specialist high-performance computing.</li><li>Pioneered Extended Reality as an evolving organisational capability.</li><li>Led cloud migration of the Common Data Environment and established KPI / assurance mechanisms for executive decision support.</li></ul></div></article>
+
+      <article class="experience"><div><div class="company">Inteliawz · UAE</div><div class="role-meta">Sep 2012 – Jun 2019</div></div><div><div class="role-title">Senior Project Manager / Account Manager</div><p>Led international technology and digital-transformation programmes across client environments.</p><ul><li>Introduced Power BI and DevOps dashboards for C-suite visibility and data-led decisions.</li><li>Led multi-country transformation across UAE, Saudi Arabia and Qatar.</li><li>Managed enterprise platform digitisation spanning procurement, finance, HR and suppliers.</li><li>Designed change and training programmes supporting adoption of new products and processes.</li></ul></div></article>
+
+      <article class="experience"><div><div class="company">Earlier Software Career</div><div class="role-meta">2007 – 2013</div></div><div><div class="role-title">QA Leadership, Testing & Professional Services</div><p>Built a technical foundation across software quality, release management, client implementation and engineering collaboration.</p><ul><li>Led QA / professional services activity across approximately 15 software products.</li><li>Developed automated, functional and performance testing.</li><li>Worked with development teams on product optimisation, release quality and production readiness.</li><li>Contributed to Microsoft certification of point-of-sale products and supported web-security compliance.</li></ul></div></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Capabilities</div><h2>Technology fluency without being defined by a platform.</h2></div><p class="section-copy">The technology stack supports the product and transformation story; it is not the story itself.</p></div>
+      <div class="skills-grid">
+        <div class="card"><h3>Product & Delivery</h3><p>Product strategy · Roadmaps · Agile · Waterfall · Hybrid · Azure DevOps · Microsoft Project</p></div>
+        <div class="card"><h3>Data & Insight</h3><p>Power BI · KPI frameworks · Executive dashboards · Performance reporting</p></div>
+        <div class="card"><h3>Platforms</h3><p>Dynamics 365 · Power Platform · SAP ecosystem · SharePoint · Cloud services</p></div>
+        <div class="card"><h3>Technical Foundation</h3><p>Software Engineering · SQL · .NET · Linux · QA & testing · XR · Generative AI</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div><div class="eyebrow">Education & development</div><h2 style="margin-top:10px">Built on software engineering. Evolved through delivery.</h2><p><strong>Master's — Global Project Management</strong><br>University of Lincoln, UK · In progress</p><p><strong>BSc Software Engineering</strong><br>Specialisation: Project Management</p><p class="muted">Product Management · Agile Project Management · PMP® Certification Training · Microsoft Power Platform · Generative AI & Emerging Technology</p></div>
+      <div class="contact"><div class="eyebrow">Connect</div><h3 style="font-size:1.5rem;margin-top:12px">Zeeshan Abbasi</h3><a href="mailto:zabbasi85@gmail.com">zabbasi85@gmail.com</a><a href="tel:+447404240893">+44 7404 240 893</a><a href="https://www.linkedin.com/in/zeabbasi/" target="_blank" rel="noopener">linkedin.com/in/zeabbasi</a></div>
+    </div>
+  </footer>
+
+  <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>

@@ -1,0 +1,58 @@
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const fs = require('node:fs');
+const baseURL = process.env.PROVISION_BASE_URL || 'http://127.0.0.1:5173';
+const assert = require('node:assert/strict');
+(async () => {
+  const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || undefined });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors = []; page.on('pageerror', e => errors.push(e.message));
+  await page.goto(baseURL + '/projects/ai-for-send');
+  await page.getByRole('link', { name: 'Open Provision Explorer MVP' }).click();
+  await page.getByRole('heading', { name: 'Find possibilities nearby' }).waitFor();
+  assert.equal(await page.locator('.sg-result').count(), 14);
+  await page.getByLabel('Distance', { exact: true }).selectOption('5');
+  assert.equal(await page.locator('.sg-result').count(), 3);
+  await page.getByLabel('Young person’s age').selectOption('19');
+  assert.equal(await page.locator('.sg-result').count(), 1);
+  await page.getByRole('button', { name: 'Reset filters' }).click();
+  for (let i = 0; i < 3; i++) await page.locator('.sg-result').nth(i).getByRole('button', { name: 'Compare', exact: true }).click();
+  assert.ok(await page.locator('.sg-result').nth(3).getByRole('button', { name: 'Compare', exact: true }).isDisabled());
+  assert.equal(await page.locator('table thead th').count(), 4);
+  await page.getByLabel('Search', { exact: true }).fill('zzzz');
+  await page.getByRole('heading', { name: 'No demo settings match' }).waitFor();
+  assert.equal(await page.locator('.sg-pin').count(), 0);
+  assert.equal(await page.locator('table thead th').count(), 4);
+  await page.getByRole('button', { name: 'Clear filters', exact: true }).click();
+  await page.locator('.sg-pin').first().click();
+  assert.ok((await page.locator('#sg-detail').innerText()).includes('Example provision'));
+  assert.equal(await page.locator('#sg-detail').evaluate(el => el === document.activeElement), true);
+  const before = await page.locator('.sg-pin').first().getAttribute('style');
+  await page.getByRole('button', { name: 'Zoom in', exact: true }).click();
+  assert.notEqual(await page.locator('.sg-pin').first().getAttribute('style'), before);
+  await page.getByRole('button', { name: 'Reset map' }).click();
+  await page.locator('.sg-map').focus(); await page.keyboard.press('ArrowRight');
+  assert.notEqual(await page.locator('.sg-pin').first().getAttribute('style'), before);
+  await page.getByRole('button', { name: 'Reset map' }).click();
+  await page.getByRole('button', { name: 'Explore Havant', exact: true }).click();
+  assert.equal(await page.locator('.sg-result').count(), 2);
+  assert.ok((await page.getByRole('region', { name: 'Locality insights' }).innerText()).includes('2 demo settings'));
+  await page.getByRole('button', { name: 'Reset filters' }).click();
+  await page.getByRole('button', { name: 'Clear comparison' }).click();
+  fs.mkdirSync('review', { recursive: true });
+  for (const theme of ['light', 'dark']) for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.evaluate(t => document.body.classList.toggle('night', t === 'dark'), theme);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${theme} ${width} overflow`);
+    if (width !== 768) await page.screenshot({ path: `review/explorer-${theme}-${width}.png`, fullPage: true });
+  }
+  await page.reload(); await page.getByRole('heading', { name: 'Find possibilities nearby' }).waitFor();
+  assert.equal(await page.locator('.sg-result').count(), 14);
+  for (const route of ['/', '/showcase', '/research', '/about', '/contact']) { await page.goto(`${baseURL}${route}`); await page.locator('main').waitFor(); }
+  assert.deepEqual(errors, []);
+  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.goto(baseURL + '/send-guard/provision-explorer');
+  await page.getByText('Map tiles could not load.', { exact: false }).waitFor();
+  assert.equal(await page.locator('.sg-pin').count(), 14);
+  await browser.close();
+  console.log('PASS: navigation, filters, radius/age, empty state, comparison cap and persistence across filters, map selection/focus/zoom/keyboard, locality insights, route reload, six responsive/theme layouts, existing routes, tile failure fallback; no page errors.');
+})().catch(e => { console.error(e); process.exit(1); });

@@ -1,0 +1,33 @@
+election_year,ward,candidate,party,votes,elected,ward_total_votes,vote_share_pct,rank_in_ward,seat_position,party_colour,winning_party,winning_margin,turnout_pct,rejected_ballots,previous_election_swing,geo_reference,borough
+2026,Beam Park,Trevor Roland McKeever,Labour Party,488,True,1267,38.52,1,Elected,#E4003B,Labour Party,39,,,,,Havering
+2026,Beam Park,Alan Harding,Reform UK,449,False,1267,35.44,2,Not Elected,#12B6CF,Labour Party,39,,,,,Havering
+2026,Beam Park,Carol Denise Baker,Havering Residents Association - Beam Park,330,False,1267,26.05,3,Not Elected,#F2C94C,Labour Party,39,,,,,Havering
+2026,Cranham,Barry Mugglestone,Hornchurch Residents Association,2367,True,6691,35.38,1,Elected,#F2C94C,Hornchurch Residents Association,123,,,,,Havering
+2026,Cranham,Stephanie Jane Nunn,Hornchurch Residents Association,2244,True,6691,33.54,2,Elected,#F2C94C,Hornchurch Residents Association,123,,,,,Havering
+2026,Cranham,Kimberley Jane Gould,Hornchurch Residents Association,2080,True,6691,31.09,3,Elected,#F2C94C,Hornchurch Residents Association,123,,,,,Havering
+2026,Emerson Park,David Johnson,Reform UK,1306,True,2404,54.33,1,Elected,#12B6CF,Reform UK,208,,,,,Havering
+2026,Emerson Park,Stuart Chappell,Havering Residents Association - Emerson Park,1098,False,2404,45.67,2,Not Elected,#F2C94C,Reform UK,208,,,,,Havering
+2026,Gooshays,Geoff Burgess,Reform UK,1533,True,2980,51.44,1,Elected,#12B6CF,Reform UK,86,,,,,Havering
+2026,Gooshays,Reg Whitney,Hornchurch Residents Association,1447,False,2980,48.56,2,Not Elected,#F2C94C,Reform UK,86,,,,,Havering
+2026,Harold Wood,Brian Edward Eagling,Harold Wood Hill Park Residents Association,2425,True,4694,51.66,1,Elected,#F2C94C,Harold Wood Hill Park Residents Association,156,,,,,Havering
+2026,Harold Wood,Martin Robert Goode,Harold Wood Hill Park Residents Association,2269,True,4694,48.34,2,Elected,#F2C94C,Harold Wood Hill Park Residents Association,156,,,,,Havering
+2026,Havering-atte-Bower,Karen Ann Chesney,Havering Residents Association - Havering-atte-Bower,686,True,686,100.0,1,Elected,#F2C94C,Havering Residents Association - Havering-atte-Bower,686,,,,,Havering
+2026,Harold Hill,Kevin Ayres,Reform UK,1829,True,5038,36.3,1,Elected,#12B6CF,Reform UK,208,,,,,Havering
+2026,Harold Hill,Iurie Bivol,Reform UK,1621,True,5038,32.18,2,Elected,#12B6CF,Reform UK,208,,,,,Havering
+2026,Harold Hill,Khuram Amin,Reform UK,1588,True,5038,31.52,3,Elected,#12B6CF,Reform UK,208,,,,,Havering
+2026,Hylands & Harrow Lodge,Kevin Gill,Reform UK,2271,True,4483,50.66,1,Elected,#12B6CF,Reform UK,59,,,,,Havering
+2026,Hylands & Harrow Lodge,Sean McMahon,Reform UK,2212,True,4483,49.34,2,Elected,#12B6CF,Reform UK,59,,,,,Havering
+2026,Marshalls & Rise Park,Robert Benham,Reform UK,2241,True,2241,100.0,1,Elected,#12B6CF,Reform UK,2241,,,,,Havering
+2026,Mawneys,Graham Day,Reform UK,1863,True,3711,50.2,1,Elected,#12B6CF,Reform UK,15,,,,,Havering
+2026,Mawneys,Sue Benjamins,Reform UK,1848,True,3711,49.8,2,Elected,#12B6CF,Reform UK,15,,,,,Havering
+2026,Rainham & Wennington,George Harwin,Reform UK,1741,True,1741,100.0,1,Elected,#12B6CF,Reform UK,1741,,,,,Havering
+2026,Rush Green & Crowlands,Alex Donald,Reform UK,1347,True,2624,51.33,1,Elected,#12B6CF,Reform UK,70,,,,,Havering
+2026,Rush Green & Crowlands,Petru Eugen Dinsorean,Reform UK,1277,True,2624,48.67,2,Elected,#12B6CF,Reform UK,70,,,,,Havering
+2026,South Hornchurch,Luke Barry,Reform UK,1307,True,2458,53.17,1,Elected,#12B6CF,Reform UK,156,,,,,Havering
+2026,South Hornchurch,Angelica Ola,Reform UK,1151,True,2458,46.83,2,Elected,#12B6CF,Reform UK,156,,,,,Havering
+2026,Squirrels Heath,Martynas Cekavicius,Reform UK,2159,True,2159,100.0,1,Elected,#12B6CF,Reform UK,2159,,,,,Havering
+2026,Romford Town,Diane Smith,Reform UK,764,True,1512,50.53,1,Elected,#12B6CF,Reform UK,16,,,,,Havering
+2026,Romford Town,Russell Smith,Reform UK,748,True,1512,49.47,2,Elected,#12B6CF,Reform UK,16,,,,,Havering
+2026,Upminster,Robert Attree,Reform UK,2274,True,6581,34.55,1,Elected,#12B6CF,Reform UK,65,,,,,Havering
+2026,Upminster,Malvin Brown,Reform UK,2209,True,6581,33.57,2,Elected,#12B6CF,Reform UK,65,,,,,Havering
+2026,Upminster,Duncan George Cowie,Reform UK,2098,True,6581,31.88,3,Elected,#12B6CF,Reform UK,65,,,,,Havering

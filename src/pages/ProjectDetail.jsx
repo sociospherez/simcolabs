@@ -60,6 +60,7 @@ export default function ProjectDetail() {
             <p className="mt-5 max-w-3xl text-lg leading-8 theme-text-secondary">
               {project.summary}
             </p>
+            {project.slug === 'ai-for-send' && <Link to="/send-guard/provision-explorer" className="theme-btn-primary mt-6 inline-flex rounded-full px-6 py-3">Open Provision Explorer MVP →</Link>}
           </div>
 
           <aside className="rounded-[28px] border border-[var(--border-subtle)] theme-card p-6 backdrop-blur-sm">
